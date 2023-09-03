@@ -44,7 +44,7 @@ jobs:
         with:
           path: public
 
-deploy:
+  deploy:
     needs: build
     environment:
       name: github-pages
