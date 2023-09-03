@@ -22,6 +22,9 @@ jobs:
         with:
           fetch-depth: 0
       
+      - name: Checkout submodules
+        run: git submodule update --init --recursive
+      
       - name: clean 
         run: rm -rf content/.obsidian content/Extras && mv content/README.md content/index.md 
 
