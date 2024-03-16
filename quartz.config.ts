@@ -22,9 +22,9 @@ const config: QuartzConfig = {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        header: "Schibsted Grotesk",
-        body: "Source Sans Pro",
-        code: "IBM Plex Mono",
+        header: "M PLUS Rounded 1c",
+        body: "M Plus 2",
+        code: "Fira Code",
       },
       colors: {
         lightMode: {
