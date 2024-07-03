@@ -6,8 +6,8 @@
     <link>https://vanhung4499.github.io/</link>
     <description>My personal wiki and blog</description>
     <language>en-US</language>
-    <pubDate>Wed, 03 Jul 2024 05:03:58 GMT</pubDate>
-    <lastBuildDate>Wed, 03 Jul 2024 05:03:58 GMT</lastBuildDate>
+    <pubDate>Wed, 03 Jul 2024 07:20:27 GMT</pubDate>
+    <lastBuildDate>Wed, 03 Jul 2024 07:20:27 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>java</category>
@@ -29,9 +29,8 @@
     <category>interview</category>
     <category>sql</category>
     <category>design</category>
+    <category>design-pattern</category>
     <category>Docker</category>
-    <category>git</category>
-    <category>kubernetes</category>
     <item>
       <title>Print Stream</title>
       <link>https://vanhung4499.github.io/programming/java/IO/print.html</link>
@@ -14314,27 +14313,130 @@ Trong bản chụp, ngoài việc ghi lại số phiên bản của giao dịch 
       <enclosure url="https://raw.githubusercontent.com/vanhung4499/images/master/snap/185b9c49-4c13-4241-a848-fbff85c03a64.png" type="image/png"/>
     </item>
     <item>
+      <title>Design Pattern</title>
+      <link>https://vanhung4499.github.io/design/design-pattern/</link>
+      <guid>https://vanhung4499.github.io/design/design-pattern/</guid>
+      <source url="https://vanhung4499.github.io/rss.xml">Design Pattern</source>
+      <pubDate>Fri, 28 Jun 2024 15:54:38 GMT</pubDate>
+    </item>
+    <item>
+      <title>Overview</title>
+      <link>https://vanhung4499.github.io/design/design-pattern/overview.html</link>
+      <guid>https://vanhung4499.github.io/design/design-pattern/overview.html</guid>
+      <source url="https://vanhung4499.github.io/rss.xml">Overview</source>
+      <description>Tổng quan về mẫu thiết kế Mẫu thiết kế (Design Pattern) đại diện cho các phương pháp tốt nhất thường được sử dụng bởi các nhà phát triển phần mềm có kinh nghiệm. Mẫu thiết kế là...</description>
+      <category>design-pattern</category>
+      <pubDate>Fri, 28 Jun 2024 15:54:38 GMT</pubDate>
+      <content:encoded><![CDATA[
+<blockquote>
+<p>Mẫu thiết kế (Design Pattern) đại diện cho các phương pháp tốt nhất thường được sử dụng bởi các nhà phát triển phần mềm có kinh nghiệm. Mẫu thiết kế là các giải pháp cho các vấn đề chung mà các nhà phát triển phần mềm gặp phải trong quá trình phát triển phần mềm. Những giải pháp này được rút ra từ thời gian dài thử nghiệm và lỗi của nhiều nhà phát triển phần mềm.</p>
+</blockquote>
+<h2>📖 Nội dung</h2>
+<p>Trong tài liệu này, gồm có 2 phần chính:</p>
+<ul>
+<li>Patterns: Tổng hợp về Design Pattern, lý thuyết và cách triển khai.</li>
+<li>Practical: Áp dụng Design Pattern vào thực tế, một số ví dụ cụ thể cho từng mẫu thiết kế. Sử dụng Java để triển khai các mẫu thiết kế.</li>
+</ul>
+<p>Bạn có thể xem chi tiết từng mẫu thiết kế ở phần Patterns.</p>
+<h2>📖 Patterns</h2>
+<h3>Creational Patterns</h3>
+<blockquote>
+<p>Mẫu thiết kế tạo đối tượng cung cấp cơ chế tạo đối tượng, giúp tăng tính linh hoạt và khả năng tái sử dụng của mã hiện có.</p>
+</blockquote>
+<ul>
+<li><a href="patterns/creational/simple-factory">Simple Factory Pattern</a></li>
+<li><a href="patterns/creational/factory-method">Factory Method Pattern</a></li>
+<li><a href="patterns/creational/abstract-factory">Abstract Factory Pattern</a></li>
+<li><a href="patterns/creational/builder">Builder Pattern</a></li>
+<li><a href="patterns/creational/prototype">Prototype Pattern</a></li>
+<li><a href="patterns/creational/singleton">Singleton Pattern</a></li>
+</ul>
+<h3>Structural Patterns</h3>
+<blockquote>
+<p>Mẫu thiết kế cấu trúc giúp tổ chức các đối tượng và lớp thành các cấu trúc lớn hơn, đồng thời duy trì tính linh hoạt và hiệu suất của cấu trúc đó.</p>
+</blockquote>
+<ul>
+<li><a href="patterns/structural/adapter">Adapter Pattern</a></li>
+<li><a href="patterns/structural/bridge">Bridge Pattern</a></li>
+<li><a href="patterns/structural/composite">Composite Pattern</a></li>
+<li><a href="patterns/structural/decorator">Decorator Pattern</a></li>
+<li><a href="patterns/structural/facade">Facade Pattern</a></li>
+<li><a href="patterns/structural/flyweight">Flyweight Pattern</a></li>
+<li><a href="patterns/structural/proxy">Proxy Pattern</a></li>
+</ul>
+<h3>Behavioral patterns</h3>
+<blockquote>
+<p>Mẫu thiết kế hành vi đảm nhận trách nhiệm giao tiếp hiệu quả giữa các đối tượng và phân phối trách nhiệm.</p>
+</blockquote>
+<ul>
+<li><a href="patterns/behavioral/template-method">Template Method Pattern</a></li>
+<li><a href="patterns/behavioral/command">Command Pattern</a></li>
+<li><a href="patterns/behavioral/iterator">Iterator Pattern</a></li>
+<li><a href="patterns/behavioral/observer">Observer Pattern</a></li>
+<li><a href="patterns/interpreter">Interpreter Pattern</a> Updating!</li>
+<li><a href="patterns/behavioral/mediator">Mediator Pattern</a></li>
+<li><a href="patterns/behavioral/chain-of-responsibility">Chain Of Responsibility Pattern</a></li>
+<li><a href="patterns/behavioral/memento">Memento Pattern</a></li>
+<li><a href="patterns/behavioral/strategy">Strategy Pattern</a></li>
+<li><a href="patterns/behavioral/visitor">Visitor Pattern</a></li>
+<li><a href="patterns/behavioral/state">State Pattern</a></li>
+</ul>
+<h2>🚚 Thực chiến</h2>
+<h3>Creational Patterns</h3>
+<blockquote>
+<p>Mẫu thiết kế tạo đối tượng cung cấp cơ chế tạo đối tượng, giúp tăng tính linh hoạt và khả năng tái sử dụng của mã hiện có.</p>
+</blockquote>
+<ul>
+<li><a href="practical/creational/simple-factory">Simple Factory Pattern</a></li>
+<li><a href="practical/creational/factory-method">Factory Method Pattern</a></li>
+<li><a href="practical/creational/abstract-factory">Abstract Factory Pattern</a></li>
+<li><a href="practical/creational/builder">Builder Pattern</a></li>
+<li><a href="practical/creational/prototype">Prototype Pattern</a></li>
+<li><a href="practical/creational/singleton">Singleton Pattern</a></li>
+</ul>
+<h3>Structural Patters</h3>
+<blockquote>
+<p>Mẫu thiết kế cấu trúc giúp tổ chức các đối tượng và lớp thành các cấu trúc lớn hơn, đồng thời duy trì tính linh hoạt và hiệu suất của cấu trúc đó.</p>
+</blockquote>
+<ul>
+<li><a href="practical/structural/adapter">Adapter Pattern</a></li>
+<li><a href="practical/structural/bridge">Bridge Pattern</a></li>
+<li><a href="practical/structural/composite">Composite Pattern</a></li>
+<li><a href="practical/structural/decorator">Decorator Pattern</a></li>
+<li><a href="practical/structural/facade">Facade Pattern</a></li>
+<li><a href="practical/structural/flyweight">Flyweight Pattern</a></li>
+<li><a href="practical/structural/proxy">Proxy Pattern</a></li>
+</ul>
+<h3>Behavioral patterns</h3>
+<blockquote>
+<p>Mẫu thiết kế hành vi đảm nhận trách nhiệm giao tiếp hiệu quả giữa các đối tượng và phân phối trách nhiệm.</p>
+</blockquote>
+<ul>
+<li><a href="practical/behavioral/template-method">Template Method Pattern</a></li>
+<li><a href="practical/behavioral/command">Command Pattern</a></li>
+<li><a href="practical/behavioral/iterator">Iterator Pattern</a></li>
+<li><a href="practical/behavioral/observer">Observer Pattern</a></li>
+<li><a href="practical/interpreter">Interpreter Pattern</a> Updating!</li>
+<li><a href="practical/behavioral/mediator">Mediator Pattern</a></li>
+<li><a href="practical/behavioral/chain-of-responsibility">Chain Of Responsibility Pattern</a></li>
+<li><a href="practical/behavioral/memento">Memento Pattern</a></li>
+<li><a href="practical/behavioral/strategy">Strategy Pattern</a></li>
+<li><a href="practical/behavioral/visitor">Visitor Pattern</a></li>
+<li><a href="practical/behavioral/state">State Pattern</a></li>
+</ul>
+<h2>📚 Tài liệu</h2>
+<ul>
+<li><a href="https://www.amazon.com/Head-First-Design-Patterns-Brain-Friendly/dp/0596007124" target="_blank" rel="noopener noreferrer">Head First Design Patterns</a></li>
+<li><a href="https://refactoring.guru/design-patterns" target="_blank" rel="noopener noreferrer">Design Patterns</a></li>
+</ul>
+]]></content:encoded>
+    </item>
+    <item>
       <title>Docker</title>
       <link>https://vanhung4499.github.io/devops/docker/</link>
       <guid>https://vanhung4499.github.io/devops/docker/</guid>
       <source url="https://vanhung4499.github.io/rss.xml">Docker</source>
       <category>Docker</category>
-      <pubDate>Fri, 28 Jun 2024 15:54:38 GMT</pubDate>
-    </item>
-    <item>
-      <title>Git</title>
-      <link>https://vanhung4499.github.io/devops/git/</link>
-      <guid>https://vanhung4499.github.io/devops/git/</guid>
-      <source url="https://vanhung4499.github.io/rss.xml">Git</source>
-      <category>git</category>
-      <pubDate>Fri, 28 Jun 2024 15:54:38 GMT</pubDate>
-    </item>
-    <item>
-      <title>Kubernetes</title>
-      <link>https://vanhung4499.github.io/devops/k8s/</link>
-      <guid>https://vanhung4499.github.io/devops/k8s/</guid>
-      <source url="https://vanhung4499.github.io/rss.xml">Kubernetes</source>
-      <category>kubernetes</category>
       <pubDate>Fri, 28 Jun 2024 15:54:38 GMT</pubDate>
     </item>
   </channel>
