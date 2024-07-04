@@ -6,8 +6,8 @@
     <link>https://vanhung4499.github.io/</link>
     <description>My personal wiki and blog</description>
     <language>en-US</language>
-    <pubDate>Thu, 04 Jul 2024 10:42:02 GMT</pubDate>
-    <lastBuildDate>Thu, 04 Jul 2024 10:42:02 GMT</lastBuildDate>
+    <pubDate>Thu, 04 Jul 2024 13:28:14 GMT</pubDate>
+    <lastBuildDate>Thu, 04 Jul 2024 13:28:14 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>java</category>
@@ -27,6 +27,415 @@
     <category>mysql</category>
     <category>redis</category>
     <category>interview</category>
+    <item>
+      <title>Java 14 Features</title>
+      <link>https://vanhung4499.github.io/programming/java/java8/java14.html</link>
+      <guid>https://vanhung4499.github.io/programming/java/java8/java14.html</guid>
+      <source url="https://vanhung4499.github.io/rss.xml">Java 14 Features</source>
+      <description>Các Tính Năng Mới của Java 14 Java 14 đã giới thiệu các tính năng mới như Record, pattern matching với instanceof, và chính thức hóa biểu thức switch từ Java 12. Hãy cùng chúng ...</description>
+      <category>java</category>
+      <pubDate>Thu, 04 Jul 2024 13:24:36 GMT</pubDate>
+      <content:encoded><![CDATA[
+<p>Java 14 đã giới thiệu các tính năng mới như Record, pattern matching với instanceof, và chính thức hóa biểu thức switch từ Java 12. Hãy cùng chúng ta tìm hiểu qua các tính năng này.</p>
+<figure><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTc5Mzg5LTA2N2E2NGZiZWY3OTU0MTAucG5n?x-oss-process=image/format,png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<h3>01. <code>instanceof</code></h3>
+<p>Theo thứ tự các tính năng mới, chúng ta sẽ bắt đầu với <code>instanceof</code>. Cách sử dụng <code>instanceof</code> cũ như sau:</p>
+<div class="language-java" data-ext="java" data-title="java"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> class</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> OldInstanceOf</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">    public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> static</span><span style="color:#C678DD;--shiki-dark:#C678DD"> void</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> main</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">String</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">[] </span><span style="color:#E06C75;--shiki-dark:#E06C75;font-style:italic;--shiki-dark-font-style:italic">args</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">)</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">        Object</span><span style="color:#E06C75;--shiki-dark:#E06C75"> str</span><span style="color:#56B6C2;--shiki-dark:#56B6C2"> =</span><span style="color:#98C379;--shiki-dark:#98C379"> "Java 14，真香"</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">        if</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> (str </span><span style="color:#C678DD;--shiki-dark:#C678DD">instanceof</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> String) {</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">            String</span><span style="color:#E06C75;--shiki-dark:#E06C75"> s</span><span style="color:#56B6C2;--shiki-dark:#56B6C2"> =</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> (String) str;</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">            System</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">out</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">println</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">s</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">length</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">());</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">        }</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+</div><p>Bạn cần sử dụng <code>instanceof</code> để kiểm tra xem kiểu của <code>str</code> có phải là <code>String</code> hay không (bước đầu tiên), sau đó trong câu lệnh <code>if</code> bạn phải ép kiểu <code>str</code> thành <code>String</code> (bước thứ hai) và phải khai báo một biến mới để lưu giá trị sau khi ép kiểu (bước thứ ba).</p>
+<p>Ba bước này không phải là quá nhiều, nhưng vẫn cảm thấy có thể có cú pháp tốt hơn. Và đúng vậy, Java 14 đã nghĩ đến điều này.</p>
+<div class="language-java" data-ext="java" data-title="java"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> class</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> NewInstanceOf</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">    public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> static</span><span style="color:#C678DD;--shiki-dark:#C678DD"> void</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> main</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">String</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">[] </span><span style="color:#E06C75;--shiki-dark:#E06C75;font-style:italic;--shiki-dark-font-style:italic">args</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">)</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">        Object</span><span style="color:#E06C75;--shiki-dark:#E06C75"> str</span><span style="color:#56B6C2;--shiki-dark:#56B6C2"> =</span><span style="color:#98C379;--shiki-dark:#98C379"> "Java 14，真香"</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">        if</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> (str </span><span style="color:#C678DD;--shiki-dark:#C678DD">instanceof</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> String</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> s) {</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">            System</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">out</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">println</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">s</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">length</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">());</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">        }</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+</div><p>Bạn có thể trực tiếp thêm một biến vào trong điều kiện <code>if</code> khi kiểm tra kiểu, không cần phải ép kiểu và khai báo biến mới nữa. Thật là ngắn gọn, phải không? Tuy nhiên, <code>instanceof</code> với pattern matching trong Java 14 chỉ là phiên bản xem trước và không được bật mặc định, do đó đoạn mã này sẽ gặp lỗi biên dịch (Java 14 không hỗ trợ <code>instanceof</code> với pattern matching).</p>
+<figure><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTc5Mzg5LTg1MTQ4YWI3MjI2ZmM4ZTUucG5n?x-oss-process=image/format,png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<p>Vậy làm thế nào để giải quyết vấn đề này? Bạn cần phải cấu hình lại phiên bản ngôn ngữ trong dự án của mình.</p>
+<figure><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTc5Mzg5LTdhMzE3MDYwNjk5NTJmMDgucG5n?x-oss-process=image/format,png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<p>Sau khi thiết lập xong, lỗi biên dịch sẽ biến mất. Kết quả chương trình như sau:</p>
+<div class="language-" data-ext="" data-title=""><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span>10</span></span></code></pre>
+</div><p>Rất tốt, thật tuyệt vời. Bạn có muốn biết trình biên dịch Java đã làm gì ở phía sau không? Hãy xem mã bytecode sau khi dịch ngược.</p>
+<div class="language-java" data-ext="java" data-title="java"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> class</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> NewInstanceOf</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">    public</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> NewInstanceOf</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">()</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">    public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> static</span><span style="color:#C678DD;--shiki-dark:#C678DD"> void</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> main</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">String</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">[] </span><span style="color:#E06C75;--shiki-dark:#E06C75;font-style:italic;--shiki-dark-font-style:italic">args</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">)</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">        Object</span><span style="color:#E06C75;--shiki-dark:#E06C75"> str</span><span style="color:#56B6C2;--shiki-dark:#56B6C2"> =</span><span style="color:#98C379;--shiki-dark:#98C379"> "Java 14，真香"</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">        String</span><span style="color:#E06C75;--shiki-dark:#E06C75"> s</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">        if</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> (str </span><span style="color:#C678DD;--shiki-dark:#C678DD">instanceof</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> String </span><span style="color:#56B6C2;--shiki-dark:#56B6C2">&amp;&amp;</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> (s </span><span style="color:#56B6C2;--shiki-dark:#56B6C2">=</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> (String) str) </span><span style="color:#56B6C2;--shiki-dark:#56B6C2">==</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> (String) str) {</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">            System</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">out</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">println</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">s</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">length</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">());</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">        }</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+</div><p>Trước khi kiểm tra điều kiện trong <code>if</code>, trình biên dịch đã khai báo biến <code>s</code>, sau đó trong điều kiện <code>if</code> nó thực hiện ép kiểu <code>s = (String) str</code> và kiểm tra xem <code>s</code> và <code>str</code> có bằng nhau hay không. Đây thực sự là một tính năng tốt giúp tăng năng suất của lập trình viên, rất hy vọng tính năng này sẽ được chính thức hóa trong phiên bản tiếp theo.</p>
+<h3>02. <code>Records</code></h3>
+<p>Trong bài viết trước, tôi đã nói về <a href="/programming/extra/immutable">tính bất biến của lớp</a>, nó được định nghĩa như sau:</p>
+<div class="language-java line-numbers-mode" data-ext="java" data-title="java"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> final</span><span style="color:#C678DD;--shiki-dark:#C678DD"> class</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> Writer</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">    private</span><span style="color:#C678DD;--shiki-dark:#C678DD"> final</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> String</span><span style="color:#E06C75;--shiki-dark:#E06C75"> name</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">    private</span><span style="color:#C678DD;--shiki-dark:#C678DD"> final</span><span style="color:#C678DD;--shiki-dark:#C678DD"> int</span><span style="color:#E06C75;--shiki-dark:#E06C75"> age</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">    public</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> Writer</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">String</span><span style="color:#E06C75;--shiki-dark:#E06C75;font-style:italic;--shiki-dark-font-style:italic"> name</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">, </span><span style="color:#C678DD;--shiki-dark:#C678DD">int</span><span style="color:#E06C75;--shiki-dark:#E06C75;font-style:italic;--shiki-dark-font-style:italic"> age</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">)</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">        this</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">name</span><span style="color:#56B6C2;--shiki-dark:#56B6C2"> =</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> name;</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">        this</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">age</span><span style="color:#56B6C2;--shiki-dark:#56B6C2"> =</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> age;</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">    public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> int</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> getAge</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">()</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">        return</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> age;</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">    public</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> String</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> getName</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">()</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">        return</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> name;</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Đối với <code>Records</code>, một Record đại diện cho một trạng thái bất biến. Mặc dù nó sẽ cung cấp các phương thức như <code>equals()</code>, <code>hashCode()</code>, <code>toString()</code>, constructor, và các getter của trường, nhưng nó không thay thế lớp đối tượng có thể thay đổi (không có setter), cũng như các tính năng do Lombok cung cấp.</p>
+<p>Hãy dùng <code>Records</code> để thay thế lớp <code>Writer</code> ở trên:</p>
+<div class="language-java" data-ext="java" data-title="java"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> record</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> Writer</span><span style="color:#E06C75;--shiki-dark:#E06C75">(</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">String</span><span style="color:#E06C75;--shiki-dark:#E06C75"> name</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">,</span><span style="color:#C678DD;--shiki-dark:#C678DD"> int</span><span style="color:#E06C75;--shiki-dark:#E06C75"> age) </span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">{</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> }</span></span></code></pre>
+</div><p>Bạn thấy đấy, chỉ cần một dòng mã là đủ. Quan trọng là nó có nhiều tính năng hơn so với mã trước đó. Hãy xem mã bytecode sau khi dịch ngược:</p>
+<div class="language-java line-numbers-mode" data-ext="java" data-title="java"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> final</span><span style="color:#C678DD;--shiki-dark:#C678DD"> class</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> Writer</span><span style="color:#C678DD;--shiki-dark:#C678DD"> extends</span><span style="color:#E06C75;--shiki-dark:#E06C75"> java.lang.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">Record</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">    private</span><span style="color:#C678DD;--shiki-dark:#C678DD"> final</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> java</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">lang</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">String</span><span style="color:#E06C75;--shiki-dark:#E06C75"> name</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">    private</span><span style="color:#C678DD;--shiki-dark:#C678DD"> final</span><span style="color:#C678DD;--shiki-dark:#C678DD"> int</span><span style="color:#E06C75;--shiki-dark:#E06C75"> age</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">    public</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> Writer</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">java</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">lang</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">String</span><span style="color:#E06C75;--shiki-dark:#E06C75;font-style:italic;--shiki-dark-font-style:italic"> name</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">, </span><span style="color:#C678DD;--shiki-dark:#C678DD">int</span><span style="color:#E06C75;--shiki-dark:#E06C75;font-style:italic;--shiki-dark-font-style:italic"> age</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">)</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> { </span><span style="color:#7F848E;--shiki-dark:#7F848E;font-style:italic;--shiki-dark-font-style:italic">/* compiled code */</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">    public</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> java</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">lang</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">String</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> toString</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">()</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> { </span><span style="color:#7F848E;--shiki-dark:#7F848E;font-style:italic;--shiki-dark-font-style:italic">/* compiled code */</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">    public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> final</span><span style="color:#C678DD;--shiki-dark:#C678DD"> int</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> hashCode</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">()</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> { </span><span style="color:#7F848E;--shiki-dark:#7F848E;font-style:italic;--shiki-dark-font-style:italic">/* compiled code */</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">    public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> final</span><span style="color:#C678DD;--shiki-dark:#C678DD"> boolean</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> equals</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">java</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">lang</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">Object</span><span style="color:#E06C75;--shiki-dark:#E06C75;font-style:italic;--shiki-dark-font-style:italic"> o</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">)</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> { </span><span style="color:#7F848E;--shiki-dark:#7F848E;font-style:italic;--shiki-dark-font-style:italic">/* compiled code */</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">    public</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> java</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">lang</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">String</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> name</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">()</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> { </span><span style="color:#7F848E;--shiki-dark:#7F848E;font-style:italic;--shiki-dark-font-style:italic">/* compiled code */</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">    public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> int</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> age</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">()</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> { </span><span style="color:#7F848E;--shiki-dark:#7F848E;font-style:italic;--shiki-dark-font-style:italic">/* compiled code */</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> }</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Lớp là <code>final</code>, các trường là <code>private final</code>, constructor có hai tham số, các phương thức <code>toString()</code>, <code>hashCode()</code>, <code>equals()</code> cũng có, phương thức getter cũng có, chỉ khác là không có tiền tố <code>get</code>. Nhưng không có phương thức setter, tức là <code>Records</code> thực sự dành cho các đối tượng bất biến - đã được xác minh. Vậy sử dụng <code>Records</code> như thế nào?</p>
+<div class="language-java" data-ext="java" data-title="java"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> class</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> WriterDemo</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">    public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> static</span><span style="color:#C678DD;--shiki-dark:#C678DD"> void</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> main</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">String</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">[] </span><span style="color:#E06C75;--shiki-dark:#E06C75;font-style:italic;--shiki-dark-font-style:italic">args</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">)</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">        Writer</span><span style="color:#E06C75;--shiki-dark:#E06C75"> writer</span><span style="color:#56B6C2;--shiki-dark:#56B6C2"> =</span><span style="color:#C678DD;--shiki-dark:#C678DD"> new</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> Writer</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#98C379;--shiki-dark:#98C379">"Tom"</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">, </span><span style="color:#D19A66;--shiki-dark:#D19A66">18</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">);</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">        System</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">out</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">println</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#98C379;--shiki-dark:#98C379">"toString: "</span><span style="color:#56B6C2;--shiki-dark:#56B6C2"> +</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> writer);</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">        System</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">out</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">println</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#98C379;--shiki-dark:#98C379">"hashCode: "</span><span style="color:#56B6C2;--shiki-dark:#56B6C2"> +</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> writer</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">hashCode</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">());</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">        System</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">out</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">println</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#98C379;--shiki-dark:#98C379">"name: "</span><span style="color:#56B6C2;--shiki-dark:#56B6C2"> +</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> writer</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">name</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">());</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">        System</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">out</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">println</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#98C379;--shiki-dark:#98C379">"age: "</span><span style="color:#56B6C2;--shiki-dark:#56B6C2"> +</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> writer</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">age</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">());</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">        Writer</span><span style="color:#E06C75;--shiki-dark:#E06C75"> writer1</span><span style="color:#56B6C2;--shiki-dark:#56B6C2"> =</span><span style="color:#C678DD;--shiki-dark:#C678DD"> new</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> Writer</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#98C379;--shiki-dark:#98C379">"Tom"</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">, </span><span style="color:#D19A66;--shiki-dark:#D19A66">18</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">);</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">        System</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">out</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">println</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#98C379;--shiki-dark:#98C379">"equals: "</span><span style="color:#56B6C2;--shiki-dark:#56B6C2"> +</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> (</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">writer</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">equals</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(writer1)));</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+</div><p>Kết quả chương trình như sau:</p>
+<div class="language-" data-ext="" data-title=""><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span>toString: Writer[name=Tom, age=18]</span></span>
+<span class="line"><span>hashCode: 1130697218</span></span>
+<span class="line"><span>name: Tom</span></span>
+<span class="line"><span>age: 18</span></span>
+<span class="line"><span>equals: true</span></span></code></pre>
+</div><p>Rất tốt, thật tuyệt vời. Sau này việc định nghĩa các lớp bất biến sẽ đơn giản hơn rất nhiều, rất mong rằng tính năng này sẽ được chính thức hóa trong phiên bản tiếp theo.</p>
+<h3>03. Biểu thức <code>switch</code></h3>
+<p>Về biểu thức <code>switch</code>, tôi đã giải thích chi tiết trong một bài viết trước đây, bạn có thể nhấp vào <a href="https://mp.weixin.qq.com/s/1BDDLDSKDGwQAfIFMyySdg" target="_blank" rel="noopener noreferrer">liên kết này</a> để xem lại. Hai tuần trôi qua, biểu thức <code>switch</code> cuối cùng đã được chính thức công nhận, chúc mừng chúc mừng.</p>
+<p>Nhớ khi đăng bài viết này lên Juejin, tôi đã bị rất nhiều người chỉ trích vô lý, họ nói: “Cứ tưởng có kỹ thuật gì mới, không ngờ lại dùng Java 13, mà chúng tôi vẫn đang dừng ở Java 8!”. Đây rõ ràng là một thái độ bảo thủ, rất đáng tránh, lập trình viên không nên như vậy. Một lý do đơn giản là, Java 6 cũng từng rất kinh điển, nhưng không phải đã bị Java 8 thay thế sao? Theo thời gian, Java 8 sớm muộn cũng sẽ bị thay thế bởi các phiên bản mới và cải tiến hơn - luôn cần phải tiến bộ.</p>
+<p>Về biểu thức <code>switch</code>, tôi sẽ đơn giản đưa ra một ví dụ để bạn xem:</p>
+<div class="language-java line-numbers-mode" data-ext="java" data-title="java"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> class</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> SwitchDemo</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">    enum</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> PlayerTypes</span><span style="color:#E06C75;--shiki-dark:#E06C75"> {</span></span>
+<span class="line"><span style="color:#D19A66;--shiki-dark:#D19A66">        TENNIS</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="color:#D19A66;--shiki-dark:#D19A66">        FOOTBALL</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="color:#D19A66;--shiki-dark:#D19A66">        BASKETBALL</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="color:#D19A66;--shiki-dark:#D19A66">        PINGPANG</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="color:#D19A66;--shiki-dark:#D19A66">        UNKNOWN</span></span>
+<span class="line"><span style="color:#E06C75;--shiki-dark:#E06C75">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">    public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> static</span><span style="color:#C678DD;--shiki-dark:#C678DD"> void</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> main</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">String</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">[] </span><span style="color:#E06C75;--shiki-dark:#E06C75;font-style:italic;--shiki-dark-font-style:italic">args</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">)</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">        System</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">out</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">println</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">createPlayer</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">PlayerTypes</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">BASKETBALL</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">));</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">    private</span><span style="color:#C678DD;--shiki-dark:#C678DD"> static</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> String</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> createPlayer</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">PlayerTypes</span><span style="color:#E06C75;--shiki-dark:#E06C75;font-style:italic;--shiki-dark-font-style:italic"> playerType</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">)</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">        return</span><span style="color:#C678DD;--shiki-dark:#C678DD"> switch</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> (playerType) {</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">            case</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> TENNIS </span><span style="color:#C678DD;--shiki-dark:#C678DD">-&gt;</span><span style="color:#98C379;--shiki-dark:#98C379"> "Vận động viên quần vợt Federer"</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">            case</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> FOOTBALL </span><span style="color:#C678DD;--shiki-dark:#C678DD">-&gt;</span><span style="color:#98C379;--shiki-dark:#98C379"> "Cầu thủ bóng đá Ronaldo"</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">            case</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> BASKETBALL </span><span style="color:#C678DD;--shiki-dark:#C678DD">-&gt;</span><span style="color:#98C379;--shiki-dark:#98C379"> "Cầu thủ bóng rổ LeBron James"</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">            case</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> PINGPANG </span><span style="color:#C678DD;--shiki-dark:#C678DD">-&gt;</span><span style="color:#98C379;--shiki-dark:#98C379"> "Vận động viên bóng bàn Ma Long"</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">            case</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> UNKNOWN </span><span style="color:#C678DD;--shiki-dark:#C678DD">-&gt;</span><span style="color:#C678DD;--shiki-dark:#C678DD"> throw</span><span style="color:#C678DD;--shiki-dark:#C678DD"> new</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> IllegalArgumentException</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#98C379;--shiki-dark:#98C379">"Không xác định"</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">);</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">        };</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Ngoài việc có thể sử dụng cú pháp mới <code>-&gt;</code>, nó còn có thể được sử dụng như một kết quả trả về, thật tuyệt vời.</p>
+<h3>04. Text Blocks</h3>
+<p>Trước khi khối văn bản (Text Blocks) xuất hiện, nếu chúng ta cần nối chuỗi nhiều dòng, chúng ta phải sử dụng rất nhiều dấu ngoặc kép và dấu cộng, trông như một mớ hỗn độn và rất không thẩm mỹ. Nếu tình cờ phải nối các văn bản định dạng HTML (SQL nguyên bản cũng vậy), chúng ta còn phải sắp xếp bằng khoảng trắng và sử dụng ký tự thoát dòng <code>\n</code> để xuống dòng, những công việc rườm rà này thực sự là một thảm họa đối với một lập trình viên.</p>
+<div class="language-java" data-ext="java" data-title="java"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> class</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> OldTextBlock</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">    public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> static</span><span style="color:#C678DD;--shiki-dark:#C678DD"> void</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> main</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">String</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">[] </span><span style="color:#E06C75;--shiki-dark:#E06C75;font-style:italic;--shiki-dark-font-style:italic">args</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">)</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">        String</span><span style="color:#E06C75;--shiki-dark:#E06C75"> html</span><span style="color:#56B6C2;--shiki-dark:#56B6C2"> =</span><span style="color:#98C379;--shiki-dark:#98C379"> "&lt;html&gt;</span><span style="color:#56B6C2;--shiki-dark:#56B6C2">\n</span><span style="color:#98C379;--shiki-dark:#98C379">"</span><span style="color:#56B6C2;--shiki-dark:#56B6C2"> +</span></span>
+<span class="line"><span style="color:#98C379;--shiki-dark:#98C379">                "    &lt;body&gt;</span><span style="color:#56B6C2;--shiki-dark:#56B6C2">\n</span><span style="color:#98C379;--shiki-dark:#98C379">"</span><span style="color:#56B6C2;--shiki-dark:#56B6C2"> +</span></span>
+<span class="line"><span style="color:#98C379;--shiki-dark:#98C379">                "        &lt;p&gt;Hello, world&lt;/p&gt;</span><span style="color:#56B6C2;--shiki-dark:#56B6C2">\n</span><span style="color:#98C379;--shiki-dark:#98C379">"</span><span style="color:#56B6C2;--shiki-dark:#56B6C2"> +</span></span>
+<span class="line"><span style="color:#98C379;--shiki-dark:#98C379">                "    &lt;/body&gt;</span><span style="color:#56B6C2;--shiki-dark:#56B6C2">\n</span><span style="color:#98C379;--shiki-dark:#98C379">"</span><span style="color:#56B6C2;--shiki-dark:#56B6C2"> +</span></span>
+<span class="line"><span style="color:#98C379;--shiki-dark:#98C379">                "&lt;/html&gt;</span><span style="color:#56B6C2;--shiki-dark:#56B6C2">\n</span><span style="color:#98C379;--shiki-dark:#98C379">"</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">        System</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">out</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">println</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(html);</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+</div><p>Java 14 thì hoàn toàn khác:</p>
+<div class="language-java" data-ext="java" data-title="java"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> class</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> NewTextBlock</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">    public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> static</span><span style="color:#C678DD;--shiki-dark:#C678DD"> void</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> main</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">String</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">[] </span><span style="color:#E06C75;--shiki-dark:#E06C75;font-style:italic;--shiki-dark-font-style:italic">args</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">)</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">        String</span><span style="color:#E06C75;--shiki-dark:#E06C75"> html</span><span style="color:#56B6C2;--shiki-dark:#56B6C2"> =</span><span style="color:#98C379;--shiki-dark:#98C379"> """</span></span>
+<span class="line"><span style="color:#98C379;--shiki-dark:#98C379">              &lt;html&gt;</span></span>
+<span class="line"><span style="color:#98C379;--shiki-dark:#98C379">                  &lt;body&gt;</span></span>
+<span class="line"><span style="color:#98C379;--shiki-dark:#98C379">                      &lt;p&gt;Hello, world&lt;/p&gt;</span></span>
+<span class="line"><span style="color:#98C379;--shiki-dark:#98C379">                  &lt;/body&gt;</span></span>
+<span class="line"><span style="color:#98C379;--shiki-dark:#98C379">              &lt;/html&gt;</span></span>
+<span class="line"><span style="color:#98C379;--shiki-dark:#98C379">              """</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">        System</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">out</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">println</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(html);</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+</div><p>Dấu ngoặc kép, dấu cộng, ký tự thoát dòng thừa thãi, tất cả đều biến mất. Chỉ cần ba dấu ngoặc kép ở đầu và cuối là đủ. Tôi chỉ có thể nói, tuyệt vời, nó thực sự tuyệt vời!</p>
+]]></content:encoded>
+      <enclosure url="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTc5Mzg5LTA2N2E2NGZiZWY3OTU0MTAucG5n?x-oss-process=image/format,png" type="image/"/>
+    </item>
+    <item>
+      <title>Lambda</title>
+      <link>https://vanhung4499.github.io/programming/java/java8/lambda.html</link>
+      <guid>https://vanhung4499.github.io/programming/java/java8/lambda.html</guid>
+      <source url="https://vanhung4499.github.io/rss.xml">Lambda</source>
+      <description>Hiểu Rõ Về Lambda Expression 01. Sơ Lược Về Lambda Biểu thức Lambda mô tả một khối mã (hay còn gọi là phương thức ẩn danh), có thể được truyền làm tham số cho các phương thức kh...</description>
+      <category>java</category>
+      <pubDate>Thu, 04 Jul 2024 13:24:36 GMT</pubDate>
+      <content:encoded><![CDATA[
+<h3>01. Sơ Lược Về Lambda</h3>
+<p>Biểu thức Lambda mô tả một khối mã (hay còn gọi là phương thức ẩn danh), có thể được truyền làm tham số cho các phương thức khởi tạo hoặc phương thức thông thường để thực thi sau đó. Hãy xem đoạn mã dưới đây:</p>
+<div class="language-java" data-ext="java" data-title="java"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#E06C75;--shiki-dark:#E06C75">() </span><span style="color:#C678DD;--shiki-dark:#C678DD">-&gt;</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> System</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">out</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">println</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#98C379;--shiki-dark:#98C379">"Tom"</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">)</span></span></code></pre>
+</div><p>Hãy giải thích từ trái sang phải, <code>()</code> là danh sách tham số của biểu thức Lambda (trong trường hợp này không có tham số), <code>-&gt;</code> biểu thị đoạn mã này là biểu thức Lambda (tức là khi thấy <code>-&gt;</code> chúng ta biết đây là Lambda), và <code>System.out.println("Tom")</code> là mã sẽ được thực thi, nghĩa là sẽ in ra "Tom" vào luồng đầu ra chuẩn.</p>
+<p>Những ai có nền tảng Java cơ bản hẳn không lạ gì với interface Runnable, đây là một interface nền tảng của đa luồng, được định nghĩa như sau:</p>
+<div class="language-java" data-ext="java" data-title="java"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">@</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">FunctionalInterface</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> interface</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> Runnable</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">{</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">   public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> abstract</span><span style="color:#C678DD;--shiki-dark:#C678DD"> void</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> run</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">();</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+</div><p>Interface Runnable rất đơn giản, chỉ có một phương thức trừu tượng <code>run()</code>; những người cẩn thận sẽ nhận thấy một chú thích lạ <code>@FunctionalInterface</code>, chú thích này có ý nghĩa gì?</p>
+<p>Tôi đã xem mã nguồn của nó và thấy có đoạn chú thích như sau:</p>
+<blockquote>
+<p>Note that instances of functional interfaces can be created with lambda expressions, method references, or constructor references.</p>
+</blockquote>
+<p>Ý chính là, các thể hiện của interface chức năng được đánh dấu bằng <code>@FunctionalInterface</code> có thể được tạo ra bằng biểu thức Lambda, tham chiếu phương thức hoặc tham chiếu cấu trúc.</p>
+<p>Thực tế thì sao?</p>
+<p>Trước đây, khi tạo và khởi động một luồng, chúng ta làm như sau:</p>
+<div class="language-java" data-ext="java" data-title="java"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> class</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> LambdaTest</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">    public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> static</span><span style="color:#C678DD;--shiki-dark:#C678DD"> void</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> main</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">String</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">[] </span><span style="color:#E06C75;--shiki-dark:#E06C75;font-style:italic;--shiki-dark-font-style:italic">args</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">)</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">        new</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> Thread</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#C678DD;--shiki-dark:#C678DD">new</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> Runnable</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">() {</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">            @</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">Override</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">            public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> void</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> run</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">()</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">                System</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">out</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">println</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#98C379;--shiki-dark:#98C379">"Tom"</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">);</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">            }</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">        }).</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">start</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">();</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+</div><p>Còn với biểu thức Lambda? Chúng ta chỉ cần làm như sau:</p>
+<div class="language-java" data-ext="java" data-title="java"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> class</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> LambdaTest</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">    public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> static</span><span style="color:#C678DD;--shiki-dark:#C678DD"> void</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> main</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">String</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">[] </span><span style="color:#E06C75;--shiki-dark:#E06C75;font-style:italic;--shiki-dark-font-style:italic">args</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">)</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">        new</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> Thread</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(() </span><span style="color:#C678DD;--shiki-dark:#C678DD">-&gt;</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> System</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">out</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">println</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#98C379;--shiki-dark:#98C379">"Tom"</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">)).</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">start</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">();</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+</div><p>Có phải rất tuyệt không! So với lớp ẩn danh, biểu thức Lambda không chỉ dễ hiểu hơn mà còn đơn giản hóa đáng kể lượng mã cần viết.</p>
+<h3>02. Cú Pháp Lambda</h3>
+<p>Mỗi biểu thức Lambda tuân theo các quy tắc sau:</p>
+<div class="language-" data-ext="" data-title=""><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span>( danh sách-tham số ) -&gt; { biểu-thức-hoặc-các-câu-lệnh }</span></span></code></pre>
+</div><p><code>()</code> chứa <code>danh sách-tham số</code> là các tham số được ngăn cách bởi dấu phẩy. Bạn có thể chỉ định loại tham số hoặc không (trình biên dịch sẽ suy luận dựa trên ngữ cảnh). Sau Java 11, bạn cũng có thể sử dụng từ khóa <code>var</code> như loại tham số, tương tự như JavaScript.</p>
+<p><code>-&gt;</code> là ký hiệu của Lambda, giống như khi thấy một chỉ thị hoàng gia thì biết đó là của vua.</p>
+<p><code>{}</code> chứa <code>biểu-thức-hoặc-các-câu-lệnh</code> là phần thân của Lambda, có thể là một dòng lệnh hoặc nhiều dòng.</p>
+<p>Có nhiều việc có thể làm với biểu thức Lambda, ví dụ như:</p>
+<ol>
+<li>Gán giá trị cho biến, như sau:</li>
+</ol>
+<div class="language-java" data-ext="java" data-title="java"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">Runnable</span><span style="color:#E06C75;--shiki-dark:#E06C75"> r </span><span style="color:#56B6C2;--shiki-dark:#56B6C2">=</span><span style="color:#E06C75;--shiki-dark:#E06C75"> () </span><span style="color:#C678DD;--shiki-dark:#C678DD">-&gt;</span><span style="color:#E06C75;--shiki-dark:#E06C75"> { </span><span style="color:#E5C07B;--shiki-dark:#E5C07B">System</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">out</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">println</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#98C379;--shiki-dark:#98C379">"沉默王二"</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">);</span><span style="color:#E06C75;--shiki-dark:#E06C75"> }</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">r</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">run</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">();</span></span></code></pre>
+</div><ol start="2">
+<li>Làm kết quả trả về, như sau:</li>
+</ol>
+<div class="language-java" data-ext="java" data-title="java"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">static</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> FileFilter</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> getFilter</span><span style="color:#E06C75;--shiki-dark:#E06C75">(</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">String</span><span style="color:#E06C75;--shiki-dark:#E06C75"> ext) {</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">    return</span><span style="color:#E06C75;--shiki-dark:#E06C75"> (pathname) </span><span style="color:#C678DD;--shiki-dark:#C678DD">-&gt;</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> pathname</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">toString</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">().</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">endsWith</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(ext);</span></span>
+<span class="line"><span style="color:#E06C75;--shiki-dark:#E06C75">}</span></span></code></pre>
+</div><ol start="3">
+<li>Làm phần tử của mảng, như sau:</li>
+</ol>
+<div class="language-java" data-ext="java" data-title="java"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">final</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> PathMatcher</span><span style="color:#E06C75;--shiki-dark:#E06C75"> matchers[] </span><span style="color:#56B6C2;--shiki-dark:#56B6C2">=</span><span style="color:#E06C75;--shiki-dark:#E06C75"> {</span></span>
+<span class="line"><span style="color:#E06C75;--shiki-dark:#E06C75">        (path) </span><span style="color:#C678DD;--shiki-dark:#C678DD">-&gt;</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> path</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">toString</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">().</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">endsWith</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#98C379;--shiki-dark:#98C379">"txt"</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">),</span></span>
+<span class="line"><span style="color:#E06C75;--shiki-dark:#E06C75">        (path) </span><span style="color:#C678DD;--shiki-dark:#C678DD">-&gt;</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> path</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">toString</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">().</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">endsWith</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#98C379;--shiki-dark:#98C379">"java"</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="color:#E06C75;--shiki-dark:#E06C75">}</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">;</span></span></code></pre>
+</div><ol start="4">
+<li>Làm tham số của phương thức hoặc phương thức khởi tạo, như sau:</li>
+</ol>
+<div class="language-java" data-ext="java" data-title="java"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">new</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> Thread</span><span style="color:#E06C75;--shiki-dark:#E06C75">(() </span><span style="color:#C678DD;--shiki-dark:#C678DD">-&gt;</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> System</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">out</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">println</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#98C379;--shiki-dark:#98C379">"沉默王二"</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">)</span><span style="color:#E06C75;--shiki-dark:#E06C75">)</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">start</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">();</span></span></code></pre>
+</div><p>Cần chú ý đến phạm vi hoạt động của biểu thức Lambda.</p>
+<div class="language-java" data-ext="java" data-title="java"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> static</span><span style="color:#C678DD;--shiki-dark:#C678DD"> void</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> main</span><span style="color:#E06C75;--shiki-dark:#E06C75">(</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">String</span><span style="color:#E06C75;--shiki-dark:#E06C75">[] args) {</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">    int</span><span style="color:#E06C75;--shiki-dark:#E06C75"> limit </span><span style="color:#56B6C2;--shiki-dark:#56B6C2">=</span><span style="color:#D19A66;--shiki-dark:#D19A66"> 10</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">    Runnable</span><span style="color:#E06C75;--shiki-dark:#E06C75"> r </span><span style="color:#56B6C2;--shiki-dark:#56B6C2">=</span><span style="color:#E06C75;--shiki-dark:#E06C75"> () </span><span style="color:#C678DD;--shiki-dark:#C678DD">-&gt;</span><span style="color:#E06C75;--shiki-dark:#E06C75"> {</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">        int</span><span style="color:#E06C75;--shiki-dark:#E06C75"> limit </span><span style="color:#56B6C2;--shiki-dark:#56B6C2">=</span><span style="color:#D19A66;--shiki-dark:#D19A66"> 5</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">        for</span><span style="color:#E06C75;--shiki-dark:#E06C75"> (</span><span style="color:#C678DD;--shiki-dark:#C678DD">int</span><span style="color:#E06C75;--shiki-dark:#E06C75"> i </span><span style="color:#56B6C2;--shiki-dark:#56B6C2">=</span><span style="color:#D19A66;--shiki-dark:#D19A66"> 0</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">;</span><span style="color:#E06C75;--shiki-dark:#E06C75"> i </span><span style="color:#56B6C2;--shiki-dark:#56B6C2">&lt;</span><span style="color:#E06C75;--shiki-dark:#E06C75"> limit</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">;</span><span style="color:#E06C75;--shiki-dark:#E06C75"> i</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">++</span><span style="color:#E06C75;--shiki-dark:#E06C75">)</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">            System</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">out</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">println</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(i);</span></span>
+<span class="line"><span style="color:#E06C75;--shiki-dark:#E06C75">    }</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="color:#E06C75;--shiki-dark:#E06C75">}</span></span></code></pre>
+</div><p>Đoạn mã trên sẽ báo lỗi khi biên dịch: biến limit đã được định nghĩa trước.</p>
+<p>Giống như lớp ẩn danh, không nên thay đổi biến cục bộ trong phương thức ở phần thân biểu thức Lambda, nếu không biên dịch sẽ không thành công: biến sử dụng trong biểu thức Lambda phải là <code>final</code>.</p>
+<figure><img src="https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/java8/Lambda-3.jpg" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<p>Nguyên nhân của vấn đề này là do quy tắc Java quy định:</p>
+<blockquote>
+<p>Bất kỳ biến cục bộ, tham số hình thức hoặc tham số ngoại lệ nào được sử dụng nhưng không được khai báo trong biểu thức lambda<br>
+phải được khai báo là final hoặc effectively final <a href="http://docs.oracle.com/javase/specs/jls/se8/html/jls-4.html#jls-4.12.4" target="_blank" rel="noopener noreferrer">(§4.12.4)</a>,<br>
+nếu không sẽ xảy ra lỗi biên dịch khi cố gắng sử dụng.</p>
+</blockquote>
+<p>Ý chính là, các biến được sử dụng trong biểu thức Lambda nhưng không khai báo trong biểu thức đó phải được khai báo là final hoặc effectively final, nếu không sẽ xảy ra lỗi biên dịch.</p>
+<p>Về sự khác biệt giữa final và effectively final, có thể có một số bạn chưa rõ, tôi sẽ giải thích thêm.</p>
+<div class="language-java" data-ext="java" data-title="java"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">final</span><span style="color:#C678DD;--shiki-dark:#C678DD"> int</span><span style="color:#E06C75;--shiki-dark:#E06C75"> a</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="color:#E06C75;--shiki-dark:#E06C75">a </span><span style="color:#56B6C2;--shiki-dark:#56B6C2">=</span><span style="color:#D19A66;--shiki-dark:#D19A66"> 1</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="color:#7F848E;--shiki-dark:#7F848E;font-style:italic;--shiki-dark-font-style:italic">// a = 2; // a là final, nên không thể gán giá trị lại</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">int</span><span style="color:#E06C75;--shiki-dark:#E06C75"> b</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="color:#E06C75;--shiki-dark:#E06C75">b </span><span style="color:#56B6C2;--shiki-dark:#56B6C2">=</span><span style="color:#D19A66;--shiki-dark:#D19A66"> 1</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="color:#7F848E;--shiki-dark:#7F848E;font-style:italic;--shiki-dark-font-style:italic">// b sau đó không thay đổi nữa</span></span>
+<span class="line"><span style="color:#7F848E;--shiki-dark:#7F848E;font-style:italic;--shiki-dark-font-style:italic">// b là effectively final</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">int</span><span style="color:#E06C75;--shiki-dark:#E06C75"> c</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="color:#E06C75;--shiki-dark:#E06C75">c </span><span style="color:#56B6C2;--shiki-dark:#56B6C2">=</span><span style="color:#D19A66;--shiki-dark:#D19A66"> 1</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="color:#7F848E;--shiki-dark:#7F848E;font-style:italic;--shiki-dark-font-style:italic">// c ban đầu được gán giá trị 1, sau đó gán lại giá trị 2</span></span>
+<span class="line"><span style="color:#E06C75;--shiki-dark:#E06C75">c </span><span style="color:#56B6C2;--shiki-dark:#56B6C2">=</span><span style="color:#D19A66;--shiki-dark:#D19A66"> 2</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="color:#7F848E;--shiki-dark:#7F848E;font-style:italic;--shiki-dark-font-style:italic">// c không phải là effectively final</span></span></code></pre>
+</div><p>Hiểu sự khác biệt giữa final và effectively final, chúng ta biết rằng nếu khai báo limit là final, thì không thể thay đổi giá trị của biến đó trong biểu thức Lambda. Vậy có giải pháp nào để vừa không bị cảnh báo khi biên dịch, vừa có thể thay đổi giá trị của biến không?</p>
+<p>Sau khi suy nghĩ và thử nghiệm, tôi đã tìm ra 3 giải pháp khả thi:</p>
+<ol>
+<li>
+<p>Khai báo biến limit là static.</p>
+</li>
+<li>
+<p>Khai báo biến limit là AtomicInteger.</p>
+</li>
+<li>
+<p>Sử dụng mảng.</p>
+</li>
+</ol>
+<p>Sau đây là chi tiết từng giải pháp.</p>
+<h4>01) Khai báo biến limit là static</h4>
+<p>Để khai báo biến limit là static, ta cần đặt biến limit bên ngoài phương thức <code>main()</code> vì bản thân phương thức <code>main()</code> là static. Ví dụ mã đầy đủ như sau:</p>
+<div class="language-java" data-ext="java" data-title="java"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> class</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> ModifyVariable2StaticInsideLambda</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">    static</span><span style="color:#C678DD;--shiki-dark:#C678DD"> int</span><span style="color:#E06C75;--shiki-dark:#E06C75"> limit </span><span style="color:#56B6C2;--shiki-dark:#56B6C2">=</span><span style="color:#D19A66;--shiki-dark:#D19A66"> 10</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">    public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> static</span><span style="color:#C678DD;--shiki-dark:#C678DD"> void</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> main</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">String</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">[] </span><span style="color:#E06C75;--shiki-dark:#E06C75;font-style:italic;--shiki-dark-font-style:italic">args</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">)</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">        Runnable</span><span style="color:#E06C75;--shiki-dark:#E06C75"> r</span><span style="color:#56B6C2;--shiki-dark:#56B6C2"> =</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> () </span><span style="color:#C678DD;--shiki-dark:#C678DD">-&gt;</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">            limit </span><span style="color:#56B6C2;--shiki-dark:#56B6C2">=</span><span style="color:#D19A66;--shiki-dark:#D19A66"> 5</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">            for</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> (</span><span style="color:#C678DD;--shiki-dark:#C678DD">int</span><span style="color:#E06C75;--shiki-dark:#E06C75"> i</span><span style="color:#56B6C2;--shiki-dark:#56B6C2"> =</span><span style="color:#D19A66;--shiki-dark:#D19A66"> 0</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">; i </span><span style="color:#56B6C2;--shiki-dark:#56B6C2">&lt;</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> limit; i++) {</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">                System</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">out</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">println</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(i);</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">            }</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">        };</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">        new</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> Thread</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(r).</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">start</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">();</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+</div><p>Hãy xem kết quả đầu ra của chương trình:</p>
+<div class="language-" data-ext="" data-title=""><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span>0</span></span>
+<span class="line"><span>1</span></span>
+<span class="line"><span>2</span></span>
+<span class="line"><span>3</span></span>
+<span class="line"><span>4</span></span></code></pre>
+</div><p>OK, giải pháp này là khả thi.</p>
+<h4>02) Khai báo biến limit là AtomicInteger</h4>
+<p>AtomicInteger có thể đảm bảo việc thay đổi giá trị int là nguyên tử, có thể sử dụng phương thức <code>set()</code> để đặt một giá trị int mới và phương thức <code>get()</code> để lấy giá trị int hiện tại.</p>
+<div class="language-java" data-ext="java" data-title="java"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> class</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> ModifyVariable2AtomicInsideLambda</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">    public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> static</span><span style="color:#C678DD;--shiki-dark:#C678DD"> void</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> main</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">String</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">[] </span><span style="color:#E06C75;--shiki-dark:#E06C75;font-style:italic;--shiki-dark-font-style:italic">args</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">)</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">        final</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> AtomicInteger</span><span style="color:#E06C75;--shiki-dark:#E06C75"> limit</span><span style="color:#56B6C2;--shiki-dark:#56B6C2"> =</span><span style="color:#C678DD;--shiki-dark:#C678DD"> new</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> AtomicInteger</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#D19A66;--shiki-dark:#D19A66">10</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">);</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">        Runnable</span><span style="color:#E06C75;--shiki-dark:#E06C75"> r</span><span style="color:#56B6C2;--shiki-dark:#56B6C2"> =</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> () </span><span style="color:#C678DD;--shiki-dark:#C678DD">-&gt;</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">            limit</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">set</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#D19A66;--shiki-dark:#D19A66">5</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">);</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">            for</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> (</span><span style="color:#C678DD;--shiki-dark:#C678DD">int</span><span style="color:#E06C75;--shiki-dark:#E06C75"> i</span><span style="color:#56B6C2;--shiki-dark:#56B6C2"> =</span><span style="color:#D19A66;--shiki-dark:#D19A66"> 0</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">; i </span><span style="color:#56B6C2;--shiki-dark:#56B6C2">&lt;</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> limit</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">get</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(); i++) {</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">                System</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">out</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">println</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(i);</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">            }</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">        };</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">        new</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> Thread</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(r).</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">start</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">();</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+</div><p>Hãy xem kết quả đầu ra của chương trình:</p>
+<div class="language-" data-ext="" data-title=""><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span>0</span></span>
+<span class="line"><span>1</span></span>
+<span class="line"><span>2</span></span>
+<span class="line"><span>3</span></span>
+<span class="line"><span>4</span></span></code></pre>
+</div><p>OK, giải pháp này cũng khả thi.</p>
+<h4>03) Sử dụng mảng</h4>
+<p>Cách sử dụng mảng có một chút lừa dối, khi khai báo mảng ta đặt là final, nhưng khi thay đổi giá trị int thì ta thay đổi một phần tử của mảng.</p>
+<div class="language-java" data-ext="java" data-title="java"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> class</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> ModifyVariable2ArrayInsideLambda</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">    public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> static</span><span style="color:#C678DD;--shiki-dark:#C678DD"> void</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> main</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">String</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">[] </span><span style="color:#E06C75;--shiki-dark:#E06C75;font-style:italic;--shiki-dark-font-style:italic">args</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">)</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">        final</span><span style="color:#C678DD;--shiki-dark:#C678DD"> int</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> [] </span><span style="color:#E06C75;--shiki-dark:#E06C75">limits</span><span style="color:#56B6C2;--shiki-dark:#56B6C2"> =</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span><span style="color:#D19A66;--shiki-dark:#D19A66">10</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">};</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">        Runnable</span><span style="color:#E06C75;--shiki-dark:#E06C75"> r</span><span style="color:#56B6C2;--shiki-dark:#56B6C2"> =</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> () </span><span style="color:#C678DD;--shiki-dark:#C678DD">-&gt;</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">            limits[</span><span style="color:#D19A66;--shiki-dark:#D19A66">0</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">] </span><span style="color:#56B6C2;--shiki-dark:#56B6C2">=</span><span style="color:#D19A66;--shiki-dark:#D19A66"> 5</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">            for</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> (</span><span style="color:#C678DD;--shiki-dark:#C678DD">int</span><span style="color:#E06C75;--shiki-dark:#E06C75"> i</span><span style="color:#56B6C2;--shiki-dark:#56B6C2"> =</span><span style="color:#D19A66;--shiki-dark:#D19A66"> 0</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">; i </span><span style="color:#56B6C2;--shiki-dark:#56B6C2">&lt;</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> limits[</span><span style="color:#D19A66;--shiki-dark:#D19A66">0</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">]; i++) {</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">                System</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">out</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">println</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(i);</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">            }</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">        };</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">        new</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> Thread</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(r).</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">start</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">();</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+</div><p>Hãy xem kết quả đầu ra của chương trình:</p>
+<div class="language-" data-ext="" data-title=""><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span>0</span></span>
+<span class="line"><span>1</span></span>
+<span class="line"><span>2</span></span>
+<span class="line"><span>3</span></span>
+<span class="line"><span>4</span></span></code></pre>
+</div><p>OK, giải pháp này cũng khả thi.</p>
+<h3>03. Lambda và từ khóa this</h3>
+<p>Biểu thức Lambda không tạo ra phạm vi mới, điều này khác với lớp ẩn danh. Nói cách khác, từ khóa this trong thân biểu thức Lambda giống với thể hiện của lớp mà nó đang nằm trong đó.</p>
+<p>Hãy xem ví dụ sau:</p>
+<div class="language-java line-numbers-mode" data-ext="java" data-title="java"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> class</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> LamadaTest</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">    public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> static</span><span style="color:#C678DD;--shiki-dark:#C678DD"> void</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> main</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">String</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">[] </span><span style="color:#E06C75;--shiki-dark:#E06C75;font-style:italic;--shiki-dark-font-style:italic">args</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">)</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">        new</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> LamadaTest</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">().</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">work</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">();</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">    public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> void</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> work</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">()</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">        System</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">out</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">printf</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#98C379;--shiki-dark:#98C379">"this = %s%n"</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">, </span><span style="color:#E5C07B;--shiki-dark:#E5C07B">this</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">        Runnable</span><span style="color:#E06C75;--shiki-dark:#E06C75"> r</span><span style="color:#56B6C2;--shiki-dark:#56B6C2"> =</span><span style="color:#C678DD;--shiki-dark:#C678DD"> new</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> Runnable</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">()</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">        {</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">            @</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">Override</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">            public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> void</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> run</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">()</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">            {</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">                System</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">out</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">printf</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#98C379;--shiki-dark:#98C379">"this = %s%n"</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">, </span><span style="color:#E5C07B;--shiki-dark:#E5C07B">this</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">);</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">            }</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">        };</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">        new</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> Thread</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(r).</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">start</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">();</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">        new</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> Thread</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(() </span><span style="color:#C678DD;--shiki-dark:#C678DD">-&gt;</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> System</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">out</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">printf</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#98C379;--shiki-dark:#98C379">"this = %s%n"</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">, </span><span style="color:#E5C07B;--shiki-dark:#E5C07B">this</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">)).</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">start</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">();</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Gợi ý: <code>%s</code> đại diện cho chuỗi tại vị trí hiện tại, <code>%n</code> đại diện cho ký tự xuống dòng, cũng có thể dùng <code>\n</code> thay thế, nhưng <code>%n</code> là đa nền tảng.</p>
+<p>Mã trong phương thức <code>work()</code> có thể chia thành 3 phần:</p>
+<ol>
+<li>Từ khóa this độc lập</li>
+</ol>
+<div class="language-java" data-ext="java" data-title="java"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">System</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">out</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">printf</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#98C379;--shiki-dark:#98C379">"this = %s%n"</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">, </span><span style="color:#E5C07B;--shiki-dark:#E5C07B">this</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">);</span></span></code></pre>
+</div><p>Trong đó, this là đối tượng LamadaTest được tạo thông qua từ khóa new trong phương thức <code>main()</code> — <code>new LamadaTest()</code>.</p>
+<ol start="2">
+<li>Từ khóa this trong lớp ẩn danh</li>
+</ol>
+<div class="language-java" data-ext="java" data-title="java"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">Runnable</span><span style="color:#E06C75;--shiki-dark:#E06C75"> r </span><span style="color:#56B6C2;--shiki-dark:#56B6C2">=</span><span style="color:#C678DD;--shiki-dark:#C678DD"> new</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> Runnable</span><span style="color:#E06C75;--shiki-dark:#E06C75">()</span></span>
+<span class="line"><span style="color:#E06C75;--shiki-dark:#E06C75">{</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">    @</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">Override</span></span>
+<span class="line"><span style="color:#C678DD;--shiki-dark:#C678DD">    public</span><span style="color:#C678DD;--shiki-dark:#C678DD"> void</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> run</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">()</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">    {</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">        System</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">out</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">printf</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#98C379;--shiki-dark:#98C379">"this = %s%n"</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">, </span><span style="color:#E5C07B;--shiki-dark:#E5C07B">this</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">);</span></span>
+<span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"><span style="color:#E06C75;--shiki-dark:#E06C75">}</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">;</span></span></code></pre>
+</div><p>Trong đó, this là đối tượng Runnable được tạo trong phương thức <code>work()</code> thông qua từ khóa new — <code>new Runnable(){...}</code>.</p>
+<ol start="3">
+<li>Từ khóa this trong biểu thức Lambda</li>
+</ol>
+<p>Trong đó, từ khóa this giống với phần 1.</p>
+<p>Chúng ta hãy xem kết quả đầu ra của chương trình:</p>
+<div class="language-java" data-ext="java" data-title="java"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">this</span><span style="color:#56B6C2;--shiki-dark:#56B6C2"> =</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> com</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">cmower</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">java_demo</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">journal</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">LamadaTest</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">@</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">3feba861</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">this</span><span style="color:#56B6C2;--shiki-dark:#56B6C2"> =</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> com</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">cmower</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">java_demo</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">journal</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">LamadaTest$1</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">@</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">64f033cb</span></span>
+<span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">this</span><span style="color:#56B6C2;--shiki-dark:#56B6C2"> =</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> com</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">cmower</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">java_demo</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">journal</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">LamadaTest</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">@</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">3feba861</span></span></code></pre>
+</div><p>Phù hợp với phân tích của chúng ta.</p>
+<h3>04. Cuối cùng</h3>
+<p>Mặc dù biểu thức Lambda đã làm rất nhiều điều đáng kinh ngạc trong việc đơn giản hóa lập trình Java, nhưng trong một số trường hợp, sử dụng không đúng cách vẫn có thể dẫn đến sự lộn xộn không cần thiết, vì vậy mọi người hãy cẩn thận khi sử dụng.</p>
+]]></content:encoded>
+      <enclosure url="https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/java8/Lambda-3.jpg" type="image/jpeg"/>
+    </item>
     <item>
       <title>Optional</title>
       <link>https://vanhung4499.github.io/programming/java/java8/optional.html</link>
@@ -702,7 +1111,7 @@
       <content:encoded><![CDATA[
 <p>Collections là một lớp công cụ do JDK cung cấp, nằm trong gói java.util. Nó cung cấp một loạt các phương thức tĩnh để giúp chúng ta thực hiện các thao tác trên các collection một cách dễ dàng, được coi như là quản gia của framework collection.</p>
 <p>Cách sử dụng Collections rất đơn giản. Trong Intellij IDEA, khi bạn gõ <code>Collections.</code> thì sẽ thấy tất cả các phương thức mà nó cung cấp. Chỉ cần nhìn qua tên phương thức và các tham số là bạn có thể biết phương thức đó dùng để làm gì.</p>
-<figure><img src="https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/common-tool/collections-01.png" alt="Collections Methods" tabindex="0" loading="lazy"><figcaption>Collections Methods</figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704191622.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
 <p>Để tiết kiệm thời gian học tập của bạn, tôi đã phân loại các phương thức này và đưa ra một số ví dụ đơn giản.</p>
 <h3>01. Các Thao Tác Sắp Xếp</h3>
 <ul>
@@ -776,7 +1185,7 @@
 <span class="line"><span>Kết quả sau khi điền: [tom, tom, tom, tom, tom]</span></span></code></pre>
 </div><h3>03. Đồng Bộ Hóa</h3>
 <p><a href="/programming/java/collection/hashmap">HashMap không an toàn khi dùng trong đa luồng</a>, chúng ta đã nói về điều này trước đây. Thực ra, ArrayList cũng không an toàn khi dùng trong đa luồng và không thể sử dụng trong môi trường đa luồng. Tuy nhiên, lớp công cụ Collections cung cấp một số phương thức synchronizedXxx để trả về một đối tượng được đồng bộ hóa, từ đó giải quyết vấn đề an toàn khi truy cập collection trong đa luồng.</p>
-<figure><img src="https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/common-tool/collections-02.png" alt="Synchronized Methods" tabindex="0" loading="lazy"><figcaption>Synchronized Methods</figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704191648.png" alt="image.png" tabindex="0" loading="lazy"><figcaption>image.png</figcaption></figure>
 <p>Sử dụng cũng rất đơn giản:</p>
 <div class="language-java" data-ext="java" data-title="java"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">List</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">&lt;</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">String</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">&gt;</span><span style="color:#E06C75;--shiki-dark:#E06C75"> synchronizedList </span><span style="color:#56B6C2;--shiki-dark:#56B6C2">=</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> Collections</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">synchronizedList</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(list);</span></span></code></pre>
 </div><p>Nhìn vào mã nguồn của SynchronizedList sẽ hiểu ngay, nó chỉ thêm một lớp khóa bằng từ khóa <a href="/programming/java/thread/synchronized-1">synchronized</a> vào các phương thức mà thôi.</p>
@@ -879,9 +1288,9 @@
 </div><h3>06. CollectionUtils: Các lớp tiện ích cho tập hợp từ Spring và Apache</h3>
 <p>Ngoài các công cụ từ JDK như <code>Collections</code>, <code>CollectionUtils</code> từ Spring và Apache cũng rất phổ biến.</p>
 <p>Hiện tại, phổ biến nhất là <code>CollectionUtils</code> trong gói <code>org.springframework.util</code> của Spring.</p>
-<figure><img src="https://cdn.tobebetterjavaer.com/stutymore/utils-20230330101919.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704192055.png" alt="image.png" tabindex="0" loading="lazy"><figcaption>image.png</figcaption></figure>
 <p>Và <code>CollectionUtils</code> trong gói <code>org.apache.commons.collections</code> của Apache.</p>
-<figure><img src="https://cdn.tobebetterjavaer.com/stutymore/utils-20230330103825.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704192106.png" alt="image.png" tabindex="0" loading="lazy"><figcaption>image.png</figcaption></figure>
 <p>Các Maven coordinates như sau:</p>
 <div class="language-" data-ext="" data-title=""><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span>&lt;dependency&gt;</span></span>
 <span class="line"><span>    &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;</span></span>
@@ -942,7 +1351,7 @@
 <p>Có thể có người nói rằng, lớp tiện ích không có gì giá trị, chỉ là gọi phương thức thôi, nhưng đó là sai lầm lớn: nếu bạn được yêu cầu viết, liệu bạn có viết được một lớp tiện ích như Collections không?</p>
 <p>Đó là câu hỏi mà những người giỏi cần suy nghĩ.</p>
 ]]></content:encoded>
-      <enclosure url="https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/common-tool/collections-01.png" type="image/png"/>
+      <enclosure url="https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704191622.png" type="image/png"/>
     </item>
     <item>
       <title>Guava</title>
@@ -1144,12 +1553,12 @@ Một số phương thức của guava và JDK cũng khác nhau.</p>
 <div class="language-java" data-ext="java" data-title="java"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#E06C75;--shiki-dark:#E06C75">[</span><span style="color:#D19A66;--shiki-dark:#D19A66">2</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">,</span><span style="color:#D19A66;--shiki-dark:#D19A66"> 1</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">,</span><span style="color:#D19A66;--shiki-dark:#D19A66"> 3</span><span style="color:#E06C75;--shiki-dark:#E06C75">]</span></span></code></pre>
 </div><p>Thứ tự ban đầu của list là 312, sau khi sử dụng phương thức <code>reverse</code>, nó trở thành 213.</p>
 <p>Lists còn có các công cụ hữu ích khác, tôi chỉ đưa ra một số ví dụ, bạn có thể tự nghiên cứu thêm.</p>
-<figure><img src="https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/common-tool/guava-4b962b06-a626-4707-9fe9-f5729536d9c5.jpg" alt="Guava" tabindex="0" loading="lazy"><figcaption>Guava</figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704191742.png" alt="image.png" tabindex="0" loading="lazy"><figcaption>image.png</figcaption></figure>
 <h3>08. Tổng kết</h3>
 <p>Trên đây là những tính năng tôi cho là phổ biến nhất, là một thư viện lõi phát triển Java được Google phát hành, tôi nghĩ rằng tính hữu dụng của nó rất cao (nếu không thì thôi?). Sau khi tích hợp vào dự án của bạn, không chỉ có thể nhanh chóng triển khai các tính năng phổ biến trong phát triển mà còn làm cho mã nguồn trở nên thanh thoát và đơn giản hơn.</p>
 <p>Tôi nghĩ rằng nó phù hợp với mọi dự án Java, còn những tính năng khác như băm, bus sự kiện, toán học, phản chiếu, thì chờ bạn khám phá nhé.</p>
 ]]></content:encoded>
-      <enclosure url="https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/common-tool/guava-4b962b06-a626-4707-9fe9-f5729536d9c5.jpg" type="image/jpeg"/>
+      <enclosure url="https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704191742.png" type="image/png"/>
     </item>
     <item>
       <title>Hutool</title>
@@ -1175,7 +1584,7 @@ Một số phương thức của guava và JDK cũng khác nhau.</p>
 <li>Bây giờ, với Hutool, chỉ cần thêm Hutool -&gt; Gọi trực tiếp <code>SecureUtil.md5()</code></li>
 </ul>
 <p>Hutool không chỉ đóng gói các lớp cơ bản của JDK như file, stream, mã hóa và giải mã, mã hóa ký tự, regex, luồng, XML, mà còn cung cấp các thành phần sau:</p>
-<figure><img src="https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/common-tool/hutool-02.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704191802.png" alt="image.png" tabindex="0" loading="lazy"><figcaption>image.png</figcaption></figure>
 <p>Rất nhiều và rất đầy đủ, vì vậy tôi chỉ chọn một số thành phần mà tôi thích để giới thiệu.</p>
 <h3>02. Chuyển đổi loại dữ liệu</h3>
 <p>Chuyển đổi loại dữ liệu rất phổ biến trong phát triển Java, đặc biệt là khi lấy tham số từ HttpRequest. Phía trước truyền số nguyên, nhưng phía sau chỉ có thể lấy được chuỗi, sau đó phải gọi phương thức <code>parseXXX()</code> để chuyển đổi và phải kiểm tra null, rất phiền phức.</p>
@@ -1240,9 +1649,9 @@ Một số phương thức của guava và JDK cũng khác nhau.</p>
 </ul>
 <p>Nói thêm về classpath.</p>
 <p>Trong thực tế lập trình, chúng ta thường cần đọc dữ liệu từ một số file như file cấu hình, file văn bản, hình ảnh, v.v. Những file này thường được đặt ở đâu?</p>
-<figure><img src="https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/common-tool/hutool-03.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704191817.png" alt="image.png" tabindex="0" loading="lazy"><figcaption>image.png</figcaption></figure>
 <p>Đặt trong thư mục resources của cấu trúc dự án, khi dự án được biên dịch, chúng sẽ xuất hiện trong thư mục classes. Trên đĩa, nó sẽ trông như thế này:</p>
-<figure><img src="https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/common-tool/hutool-04.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704191825.png" alt="image.png" tabindex="0" loading="lazy"><figcaption>image.png</figcaption></figure>
 <p>Khi đọc file, tôi không khuyến nghị sử dụng đường dẫn tuyệt đối vì các hệ điều hành khác nhau sẽ có các dấu phân cách đường dẫn khác nhau. Tốt nhất là sử dụng đường dẫn tương đối.</p>
 <p>Giả sử có một file tên là origin.txt nằm trong thư mục <code>src/resources</code>, đường dẫn sẽ như sau:</p>
 <div class="language-java" data-ext="java" data-title="java"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">FileUtil</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">getInputStream</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#98C379;--shiki-dark:#98C379">"origin.txt"</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">);</span></span></code></pre>
@@ -1353,7 +1762,7 @@ Một số phương thức của guava và JDK cũng khác nhau.</p>
 <li>Có phải số điện thoại không</li>
 <li>Và nhiều điều kiện khác</li>
 </ul>
-<figure><img src="https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/common-tool/hutool-05.png" alt="Validator" tabindex="0" loading="lazy"><figcaption>Validator</figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704191837.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
 <div class="language-java" data-ext="java" data-title="java"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">Validator</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">isEmail</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#98C379;--shiki-dark:#98C379">"Tom"</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">);</span></span>
 <span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">Validator</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">isMobile</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#98C379;--shiki-dark:#98C379">"botay.com"</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">);</span></span></code></pre>
 </div><h3>12. Map tìm kiếm hai chiều</h3>
@@ -1530,7 +1939,7 @@ Một số phương thức của guava và JDK cũng khác nhau.</p>
 <p>Hutool có nhiều thư viện khác nhau, đặc biệt là các thư viện đóng gói lại từ các thư viện của bên thứ ba, chẳng hạn như công cụ email MailUtil, công cụ mã QR QrCodeUtil, công cụ Emoji EmojiUtil, các bạn có thể tham khảo tài liệu chính thức của Hutool: <a href="https://www.hutool.cn/" target="_blank" rel="noopener noreferrer">https://www.hutool.cn/</a></p>
 <p>Địa chỉ mã nguồn dự án: <a href="https://github.com/looly/hutool" target="_blank" rel="noopener noreferrer">https://github.com/looly/hutool</a></p>
 ]]></content:encoded>
-      <enclosure url="https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/common-tool/hutool-02.png" type="image/png"/>
+      <enclosure url="https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704191802.png" type="image/png"/>
     </item>
     <item>
       <title>Objects</title>
@@ -1667,10 +2076,10 @@ Một số phương thức của guava và JDK cũng khác nhau.</p>
 <span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">System</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">out</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">println</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">Objects</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">deepEquals</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(nestedArray1, nestedArray3));</span><span style="color:#7F848E;--shiki-dark:#7F848E;font-style:italic;--shiki-dark-font-style:italic"> // Kết quả：false (vì các phần tử của mảng lồng khác nhau)</span></span></code></pre>
 </div><h3>Tóm Tắt</h3>
 <p>Ngoài các phương thức đã đề cập ở trên, Objects còn cung cấp một số phương thức khác như <code>toString</code>, bạn có thể thử nếu có hứng thú.</p>
-<figure><img src="https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/common-tool/Objects-83489814-9784-4274-841a-27ee75c046ac.jpg" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704192653.png" alt="image.png" tabindex="0" loading="lazy"><figcaption>image.png</figcaption></figure>
 <p>Tóm lại, các phương thức mà lớp Objects cung cấp rất hữu ích trong nhiều trường hợp, giúp đơn giản hóa mã nguồn và giảm thiểu khả năng xảy ra lỗi.</p>
 ]]></content:encoded>
-      <enclosure url="https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/common-tool/Objects-83489814-9784-4274-841a-27ee75c046ac.jpg" type="image/jpeg"/>
+      <enclosure url="https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704192653.png" type="image/png"/>
     </item>
     <item>
       <title>Scanner</title>
@@ -1781,7 +2190,7 @@ Một số phương thức của guava và JDK cũng khác nhau.</p>
 </div><p>Trong biểu thức chính quy, <code>\Z</code> biểu thị kết thúc của đầu vào, tức là dấu kết thúc tập tin. Trong lớp Scanner, chúng ta có thể sử dụng <code>\Z</code> làm dấu phân cách để đọc toàn bộ nội dung của tập tin.</p>
 <h3>03. Tìm Kiếm Mục Khớp</h3>
 <p>Ngoài việc quét đầu vào từ bàn phím và tập tin như đã đề cập ở trên, Scanner còn cung cấp bốn phương thức khác bắt đầu với find để tìm kiếm mục khớp:</p>
-<figure><img src="https://cdn.tobebetterjavaer.com/stutymore/scanner-20230329162213.png" alt="Scanner Methods" tabindex="0" loading="lazy"><figcaption>Scanner Methods</figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704192731.png" alt="image.png" tabindex="0" loading="lazy"><figcaption>image.png</figcaption></figure>
 <p>Hãy xem ví dụ dưới đây:</p>
 <div class="language-java" data-ext="java" data-title="java"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">String</span><span style="color:#E06C75;--shiki-dark:#E06C75"> input </span><span style="color:#56B6C2;--shiki-dark:#56B6C2">=</span><span style="color:#98C379;--shiki-dark:#98C379"> "good good study, day day up."</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">;</span></span>
 <span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">Scanner</span><span style="color:#E06C75;--shiki-dark:#E06C75"> scanner </span><span style="color:#56B6C2;--shiki-dark:#56B6C2">=</span><span style="color:#C678DD;--shiki-dark:#C678DD"> new</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> Scanner</span><span style="color:#E06C75;--shiki-dark:#E06C75">(input)</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">;</span></span>
@@ -1826,7 +2235,7 @@ Một số phương thức của guava và JDK cũng khác nhau.</p>
 <p>Tóm lại, lớp Scanner là một công cụ mạnh mẽ để xử lý đầu vào, không chỉ có thể quét đầu vào từ bàn phím mà còn có thể quét tập tin và cung cấp nhiều phương thức để đọc các loại dữ liệu khác nhau như <code>next()</code>, <code>nextInt()</code>, <code>nextLine()</code>, <code>nextDouble()</code>.</p>
 <p>Ngoài ra, còn có thể sử dụng phương thức <code>useDelimiter()</code> để đặt dấu phân cách, sử dụng <code>findInLine()</code>, <code>findWithinHorizon()</code> để tìm kiếm mục khớp, v.v.</p>
 ]]></content:encoded>
-      <enclosure url="https://cdn.tobebetterjavaer.com/stutymore/scanner-20230329162213.png" type="image/png"/>
+      <enclosure url="https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704192731.png" type="image/png"/>
     </item>
     <item>
       <title>StringUtils</title>
@@ -1848,7 +2257,7 @@ Một số phương thức của guava và JDK cũng khác nhau.</p>
 <span class="line"><span>    &lt;version&gt;3.12.0&lt;/version&gt;</span></span>
 <span class="line"><span>&lt;/dependency&gt;</span></span></code></pre>
 </div><p>StringUtils cung cấp rất nhiều phương thức hữu ích, có khoảng bốn đến năm trang như hình dưới đây, tôi chỉ chụp hai trang, thực sự là quá nhiều.</p>
-<figure><img src="https://cdn.tobebetterjavaer.com/stutymore/StringUtils-20230330111122.png" alt="StringUtils Methods" tabindex="0" loading="lazy"><figcaption>StringUtils Methods</figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704192812.png" alt="image.png" tabindex="0" loading="lazy"><figcaption>image.png</figcaption></figure>
 <p>Tiếp theo, chúng ta sẽ lấy một số phương thức thường dùng để minh họa.</p>
 <h3>Kiểm Tra Chuỗi Rỗng</h3>
 <p>Thực tế, chuỗi rỗng không chỉ là null, mà còn có "", " ", "null", v.v., nhiều trường hợp khác nhau.</p>
@@ -1951,7 +2360,7 @@ Một số phương thức của guava và JDK cũng khác nhau.</p>
 <li><code>uncapitalize(String str)</code>：Chuyển ký tự đầu tiên của chuỗi thành chữ thường.</li>
 </ul>
 ]]></content:encoded>
-      <enclosure url="https://cdn.tobebetterjavaer.com/stutymore/StringUtils-20230330111122.png" type="image/png"/>
+      <enclosure url="https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704192812.png" type="image/png"/>
     </item>
     <item>
       <title>Other Utils</title>
@@ -2132,7 +2541,7 @@ Một số phương thức của guava và JDK cũng khác nhau.</p>
 <p>Nếu bạn muốn kiểm tra xem một đối tượng có phải là đối tượng proxy không, bạn có thể sử dụng phương thức <code>isCglibProxy</code> của <code>ClassUtils</code>. Ví dụ:</p>
 <div class="language-java" data-ext="java" data-title="java"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">System</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">out</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">println</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">ClassUtils</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">isCglibProxy</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#C678DD;--shiki-dark:#C678DD">new</span><span style="color:#61AFEF;--shiki-dark:#61AFEF"> User</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">()));</span></span></code></pre>
 </div><p><code>ClassUtils</code> còn rất nhiều phương thức hữu ích khác đang chờ bạn khám phá. Nếu bạn quan tâm, bạn có thể tìm hiểu thêm về chúng.</p>
-<figure><img src="https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/common-tool/utils-c58920ac-cf04-4d95-ad29-90339a086569.jpg" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704192914.png" alt="image.png" tabindex="0" loading="lazy"><figcaption>image.png</figcaption></figure>
 <h3>BeanUtils</h3>
 <p>Spring cung cấp cho chúng ta một công cụ tiện ích cho các JavaBean, nằm trong gói <code>org.springframework.beans</code>, được gọi là <code>BeanUtils</code>.</p>
 <p>Hãy cùng nhau khám phá những điều bất ngờ mà công cụ này có thể mang lại.</p>
@@ -2160,7 +2569,7 @@ Một số phương thức của guava và JDK cũng khác nhau.</p>
 <span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">PropertyDescriptor</span><span style="color:#E06C75;--shiki-dark:#E06C75"> propertyForMethod </span><span style="color:#56B6C2;--shiki-dark:#56B6C2">=</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> BeanUtils</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">findPropertyForMethod</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(declaredMethod);</span></span>
 <span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">System</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">out</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">println</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">propertyForMethod</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">getName</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">());</span></span></code></pre>
 </div><p>Nếu bạn quan tâm đến <code>BeanUtils</code>, bạn có thể tìm hiểu thêm về nó trong những nội dung dưới đây:</p>
-<figure><img src="https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/common-tool/utils-629ecd75-259b-46aa-b1dd-82606cfc92ee.jpg" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704192949.png" alt="image.png" tabindex="0" loading="lazy"><figcaption>image.png</figcaption></figure>
 <h3>ReflectionUtils</h3>
 <p>Đôi khi, chúng ta cần sử dụng tính năng <code>phản xạ</code> trong dự án. Nếu sử dụng các phương pháp cơ bản để phát triển, mã sẽ rất dài và phức tạp, yêu cầu xử lý nhiều ngoại lệ và vấn đề quyền truy cập.</p>
 <p>Tin vui là Spring cung cấp cho chúng ta một công cụ tiện ích <code>ReflectionUtils</code>, nằm trong gói <code>org.springframework.util</code>.</p>
@@ -2182,9 +2591,9 @@ Một số phương thức của guava và JDK cũng khác nhau.</p>
 <div class="language-java" data-ext="java" data-title="java"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">Method</span><span style="color:#E06C75;--shiki-dark:#E06C75"> method </span><span style="color:#56B6C2;--shiki-dark:#56B6C2">=</span><span style="color:#E5C07B;--shiki-dark:#E5C07B"> ReflectionUtils</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">findMethod</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">User</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">class</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">, </span><span style="color:#98C379;--shiki-dark:#98C379">"getId"</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">);</span></span>
 <span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">System</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">out</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">println</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(</span><span style="color:#E5C07B;--shiki-dark:#E5C07B">ReflectionUtils</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">isEqualsMethod</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">(method));</span></span></code></pre>
 </div><p>Lớp này còn có nhiều phương thức thú vị khác. Nếu bạn quan tâm, có thể tìm hiểu thêm trong các nội dung dưới đây:</p>
-<figure><img src="https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/common-tool/utils-0a4ecb9c-b9d2-4090-a7b7-c626a0672b94.jpg" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704193001.png" alt="image.png" tabindex="0" loading="lazy"><figcaption>image.png</figcaption></figure>
 ]]></content:encoded>
-      <enclosure url="https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/common-tool/utils-c58920ac-cf04-4d95-ad29-90339a086569.jpg" type="image/jpeg"/>
+      <enclosure url="https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704192914.png" type="image/png"/>
     </item>
     <item>
       <title>Exception Handling Best Practices</title>
@@ -15220,288 +15629,6 @@ Trong bản chụp, ngoài việc ghi lại số phiên bản của giao dịch 
 <span class="line"><span style="color:#7F848E;--shiki-dark:#7F848E;font-style:italic;--shiki-dark-font-style:italic">        //</span></span></code></pre>
 </div>]]></content:encoded>
       <enclosure url="https://help-static-aliyun-doc.aliyuncs.com/assets/img/zh-CN/7268887661/p514690.jpg" type="image/jpeg"/>
-    </item>
-    <item>
-      <title>Redis Publish and Subcribe</title>
-      <link>https://vanhung4499.github.io/database/redis/pub-sub.html</link>
-      <guid>https://vanhung4499.github.io/database/redis/pub-sub.html</guid>
-      <source url="https://vanhung4499.github.io/rss.xml">Redis Publish and Subcribe</source>
-      <description>Redis Pub/Sub Redis Pub/Sub (Phát hành/Đăng ký) là một mô hình truyền thông tin: người gửi (pub) gửi thông báo, người nhận (sub) nhận thông báo. Khách hàng Redis có thể đăng ký ...</description>
-      <category>redis</category>
-      <pubDate>Fri, 28 Jun 2024 15:54:38 GMT</pubDate>
-      <content:encoded><![CDATA[
-<blockquote>
-<p>Redis Pub/Sub (Phát hành/Đăng ký) là một mô hình truyền thông tin: người gửi (pub) gửi thông báo, người nhận (sub) nhận thông báo. Khách hàng Redis có thể đăng ký bất kỳ số lượng kênh nào.</p>
-<p>Redis có hai chế độ phát hành/đăng ký:</p>
-<ul>
-<li>Phát hành/đăng ký dựa trên kênh (Channel-based)</li>
-<li>Phát hành/đăng ký dựa trên mẫu (Pattern-based)</li>
-</ul>
-</blockquote>
-<h2>Mô hình quan sát viên</h2>
-<p>Redis Pub/Sub áp dụng mô hình thiết kế kinh điển "mô hình quan sát viên" trong thiết kế phần mềm.</p>
-<p><strong>Mô hình quan sát viên</strong> (Observer) là một mô hình thiết kế hành vi, cho phép bạn định nghĩa một cơ chế đăng ký để thông báo cho nhiều đối tượng khác khi có sự kiện xảy ra với đối tượng được quan sát.</p>
-<ul>
-<li>Mô hình này được sử dụng khi thay đổi trạng thái của một đối tượng cần thay đổi các đối tượng khác, hoặc các đối tượng thực tế chưa biết trước hoặc thay đổi động.</li>
-<li>Mô hình này có thể được sử dụng khi một số đối tượng trong ứng dụng phải quan sát các đối tượng khác, nhưng chỉ trong một thời gian giới hạn hoặc trong những tình huống cụ thể.</li>
-</ul>
-<figure><img src="https://d1.awsstatic.com/product-marketing/Messaging/sns_img_topic.e024462ec88e79ed63d690a2eed6e050e33fb36f.png" alt="Mô hình quan sát viên" tabindex="0" loading="lazy"><figcaption>Mô hình quan sát viên</figcaption></figure>
-<h2>Chế độ đăng ký của Redis</h2>
-<p>Redis có hai chế độ phát hành/đăng ký:</p>
-<ol>
-<li><strong>Phát hành/Đăng ký dựa trên kênh (Channel-based Pub/Sub)</strong></li>
-</ol>
-<p>Trạng thái máy chủ trong Redis lưu giữ mối quan hệ đăng ký của tất cả các kênh trong từ điển <code>pubsub_channels</code>: Lệnh <code>SUBSCRIBE</code> chịu trách nhiệm liên kết khách hàng với kênh đã đăng ký trong từ điển này, và lệnh <code>UNSUBSCRIBE</code> thì chịu trách nhiệm hủy liên kết giữa khách hàng và kênh đã hủy đăng ký.</p>
-<h3>Ví dụ: Đăng ký kênh cụ thể</h3>
-<p>Mở khách hàng thứ nhất và thực hiện các lệnh sau:</p>
-<div class="language-shell" data-ext="shell" data-title="shell"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">&gt; SUBSCRIBE first second</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">Reading</span><span style="color:#98C379;--shiki-dark:#98C379"> messages...</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> (press </span><span style="color:#98C379;--shiki-dark:#98C379">Ctrl-C</span><span style="color:#98C379;--shiki-dark:#98C379"> to</span><span style="color:#98C379;--shiki-dark:#98C379"> quit</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">)</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">1</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">) </span><span style="color:#98C379;--shiki-dark:#98C379">"subscribe"</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">2</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">) </span><span style="color:#98C379;--shiki-dark:#98C379">"first"</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">3</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">) (</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">integer</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">) 1</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">1</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">) </span><span style="color:#98C379;--shiki-dark:#98C379">"subscribe"</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">2</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">) </span><span style="color:#98C379;--shiki-dark:#98C379">"second"</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">3</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">) (</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">integer</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">) 2</span></span></code></pre>
-</div><p>Mở khách hàng thứ hai và thực hiện lệnh sau:</p>
-<div class="language-shell" data-ext="shell" data-title="shell"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">&gt; PUBLISH second Hello</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">1</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">) </span><span style="color:#98C379;--shiki-dark:#98C379">"1"</span></span></code></pre>
-</div><p>Lúc này, khách hàng thứ nhất sẽ nhận được thông báo sau:</p>
-<div class="language-shell" data-ext="shell" data-title="shell"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">1</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">) </span><span style="color:#98C379;--shiki-dark:#98C379">"message"</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">2</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">) </span><span style="color:#98C379;--shiki-dark:#98C379">"second"</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">3</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">) </span><span style="color:#98C379;--shiki-dark:#98C379">"Hello"</span></span></code></pre>
-</div><ol start="2">
-<li><strong>Phát hành/Đăng ký dựa trên mẫu (Pattern-based Pub/Sub)</strong></li>
-</ol>
-<p>Trạng thái máy chủ trong Redis lưu giữ mối quan hệ đăng ký của tất cả các mẫu trong danh sách <code>pubsub_patterns</code>: Lệnh <code>PSUBSCRIBE</code> chịu trách nhiệm ghi lại khách hàng và mẫu đã đăng ký trong danh sách này, và lệnh <code>PUNSUBSCRIBE</code> thì chịu trách nhiệm loại bỏ ghi chép của khách hàng và mẫu đã hủy đăng ký khỏi danh sách.</p>
-<h3>Ví dụ: Đăng ký các kênh phù hợp với mẫu cụ thể</h3>
-<p>Mở khách hàng thứ nhất và thực hiện các lệnh sau:</p>
-<div class="language-shell" data-ext="shell" data-title="shell"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">&gt; PSUBSCRIBE news.*</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">Reading</span><span style="color:#98C379;--shiki-dark:#98C379"> messages...</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF"> (press </span><span style="color:#98C379;--shiki-dark:#98C379">Ctrl-C</span><span style="color:#98C379;--shiki-dark:#98C379"> to</span><span style="color:#98C379;--shiki-dark:#98C379"> quit</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">)</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">1</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">) </span><span style="color:#98C379;--shiki-dark:#98C379">"psubscribe"</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">2</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">) </span><span style="color:#98C379;--shiki-dark:#98C379">"news.*"</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">3</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">) (</span><span style="color:#61AFEF;--shiki-dark:#61AFEF">integer</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">) 1</span></span></code></pre>
-</div><p>Mở khách hàng thứ hai và thực hiện lệnh sau:</p>
-<div class="language-shell" data-ext="shell" data-title="shell"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">&gt; PUBLISH news.A Hello</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">1</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">) </span><span style="color:#98C379;--shiki-dark:#98C379">"1"</span></span></code></pre>
-</div><p>Mở khách hàng thứ ba và thực hiện lệnh sau:</p>
-<div class="language-shell" data-ext="shell" data-title="shell"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">&gt; PUBLISH news.B World</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">1</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">) </span><span style="color:#98C379;--shiki-dark:#98C379">"1"</span></span></code></pre>
-</div><p>Lúc này, khách hàng thứ nhất sẽ nhận được các thông báo sau:</p>
-<div class="language-shell" data-ext="shell" data-title="shell"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">1</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">) </span><span style="color:#98C379;--shiki-dark:#98C379">"pmessage"</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">2</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">) </span><span style="color:#98C379;--shiki-dark:#98C379">"news.*"</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">3</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">) </span><span style="color:#98C379;--shiki-dark:#98C379">"news.A"</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">4</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">) </span><span style="color:#98C379;--shiki-dark:#98C379">"Hello"</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">1</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">) </span><span style="color:#98C379;--shiki-dark:#98C379">"pmessage"</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">2</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">) </span><span style="color:#98C379;--shiki-dark:#98C379">"news.*"</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">3</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">) </span><span style="color:#98C379;--shiki-dark:#98C379">"news.B"</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">4</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">) </span><span style="color:#98C379;--shiki-dark:#98C379">"World"</span></span></code></pre>
-</div><h2>Các lệnh Phát hành/Đăng ký</h2>
-<p>Redis cung cấp các lệnh sau liên quan đến phát hành/đăng ký:</p>
-<p>| Lệnh                                                     | Mô tả                       |<br>
-|</p>
-]]></content:encoded>
-      <enclosure url="https://d1.awsstatic.com/product-marketing/Messaging/sns_img_topic.e024462ec88e79ed63d690a2eed6e050e33fb36f.png" type="image/png"/>
-    </item>
-    <item>
-      <title>Redis Replication</title>
-      <link>https://vanhung4499.github.io/database/redis/replication.html</link>
-      <guid>https://vanhung4499.github.io/database/redis/replication.html</guid>
-      <source url="https://vanhung4499.github.io/rss.xml">Redis Replication</source>
-      <description>Redis Replication Trong Redis, có thể sử dụng lệnh SLAVEOF hoặc cài đặt tùy chọn slaveof để sao chép (replicate) một máy chủ từ một máy chủ khác, trong đó máy chủ sau được gọi l...</description>
-      <category>redis</category>
-      <pubDate>Fri, 28 Jun 2024 15:54:38 GMT</pubDate>
-      <content:encoded><![CDATA[
-<blockquote>
-<p>Trong Redis,&nbsp;<strong>có thể sử dụng lệnh&nbsp;<code>SLAVEOF</code>&nbsp;hoặc cài đặt tùy chọn&nbsp;<code>slaveof</code>&nbsp;để sao chép (replicate) một máy chủ từ một máy chủ khác</strong>, trong đó máy chủ sau được gọi là máy chủ chính (master) và máy chủ trước được gọi là máy chủ phụ (slave).</p>
-<p>Sao chép Redis trước phiên bản 2.8 không xử lý hiệu quả việc sao chép lại sau khi mất kết nối, và một số cập nhật sau đó của Redis đã giải quyết vấn đề này.</p>
-</blockquote>
-<h2>1. Giới thiệu về sao chép</h2>
-<p>Redis sử dụng lệnh&nbsp;<code>slaveof host port</code>&nbsp;để biến một máy chủ thành máy chủ phụ (slave) của một máy chủ khác (master).</p>
-<p><strong>Một máy chủ chính (master) có thể có nhiều máy chủ phụ (slave)</strong>. Không chỉ máy chủ chính có thể có máy chủ phụ, mà máy chủ phụ cũng có thể có máy chủ phụ riêng của mình, và nhiều máy chủ phụ có thể tạo thành một chuỗi chính-phụ.</p>
-<p><strong>Một máy chủ chỉ có thể có một máy chủ chính và không hỗ trợ sao chép giữa các máy chủ chính.</strong>.</p>
-<p>Có thể sử dụng chức năng sao chép để giúp máy chủ chính không cần thực hiện hoạt động bền vững: Chỉ cần tắt chức năng bền vững trên máy chủ chính, sau đó cho phép máy chủ phụ thực hiện hoạt động bền vững.</p>
-<p>Trong cài đặt sử dụng chức năng sao chép của Redis, rất khuyến nghị bật tính bền vững trên cả master và slave. Khi không bật tính năng này, ví dụ như gặp vấn đề trễ do hiệu suất ổ cứng rất chậm, <strong>bạn nên cấu hình các phiên bản để tránh tự động khởi động lại sau khi thiết lập lại</strong>.</p>
-<p>Kể từ phiên bản Redis 2.6, máy chủ phụ hỗ trợ chế độ chỉ đọc và chế độ này là chế độ mặc định của máy chủ phụ.</p>
-<ul>
-<li>Chế độ chỉ đọc được điều khiển bằng tùy chọn&nbsp;<code>slave-read-only</code>&nbsp;trong tệp&nbsp;<code>redis.conf</code>, và cũng có thể được bật hoặc tắt chế độ này bằng lệnh&nbsp;<a href="http://redisdoc.com/configure/config_set.html#config-set" target="_blank" rel="noopener noreferrer">CONFIG SET parameter value</a>.</li>
-<li>Máy chủ phụ chỉ đọc sẽ từ chối thực hiện bất kỳ lệnh ghi nào, do đó không có trường hợp dữ liệu được ghi vào máy chủ phụ vì lỗi thao tác.</li>
-</ul>
-<h2>2. Sao chép phiên bản cũ</h2>
-<blockquote>
-<p>Cách triển khai sao chép trước phiên bản Redis 2.8: Lệnh&nbsp;<code>SYNC</code></p>
-</blockquote>
-<p>Chức năng sao chép Redis được chia thành hai hoạt động: đồng bộ hóa (sync) và truyền lệnh (command propagate):</p>
-<ul>
-<li><strong><code>Đồng bộ hóa (sync)</code></strong>&nbsp;- Được sử dụng để cập nhật trạng thái cơ sở dữ liệu của máy chủ phụ với trạng thái cơ sở dữ liệu hiện tại của máy chủ chính.</li>
-<li><strong><code>Truyền lệnh (command propagate)</code></strong>&nbsp;- Khi trạng thái cơ sở dữ liệu của máy chủ chính được sửa đổi, dẫn đến trạng thái không nhất quán giữa cơ sở dữ liệu chính và phụ, cho phép cơ sở dữ liệu chính và phụ trở lại trạng thái nhất quán.</li>
-</ul>
-<h3>Đồng bộ hóa</h3>
-<p>Các bước thực hiện lệnh&nbsp;<code>SYNC</code>:</p>
-<ol>
-<li>Máy chủ phụ gửi lệnh&nbsp;<code>SYNC</code>&nbsp;đến máy chủ chính.</li>
-<li>Máy chủ chính nhận lệnh&nbsp;<code>SYNC</code>&nbsp;và thực hiện lệnh&nbsp;<code>BGSAVE</code>&nbsp;để tạo tệp RDB trong nền và sử dụng một bộ đệm để ghi lại tất cả các lệnh ghi được thực hiện từ thời điểm này trở đi.</li>
-<li>Sau khi máy chủ chính hoàn thành lệnh&nbsp;<code>BGSAVE</code>, máy chủ chính sẽ gửi tệp RDB đã tạo cho máy chủ phụ. Máy chủ phụ nhận và tải tệp RDB, cập nhật trạng thái cơ sở dữ liệu của mình.</li>
-<li>Máy chủ chính gửi tất cả các lệnh ghi được ghi lại trong bộ đệm cho máy chủ phụ. Máy chủ phụ thực hiện các lệnh ghi này, cập nhật trạng thái cơ sở dữ liệu của mình.</li>
-</ol>
-<h3>Truyền lệnh</h3>
-<p>Sau khi hoàn thành hoạt động đồng bộ hóa, trạng thái cơ sở dữ liệu của máy chủ chính và phụ sẽ trở nên nhất quán. Mỗi khi máy chủ chính thực hiện một lệnh ghi được gửi từ khách hàng, trạng thái cơ sở dữ liệu của máy chủ chính và phụ không còn nhất quán. Cần gửi các lệnh ghi cho máy chủ phụ để thực hiện, đảm bảo trạng thái cơ sở dữ liệu của cả hai trở lại nhất quán.</p>
-<h3>Nhược điểm của sao chép phiên bản cũ</h3>
-<p>Có hai trường hợp khi sao chép từ máy chủ chính sang máy chủ phụ:</p>
-<ul>
-<li><strong>Sao chép lần đầu</strong>&nbsp;- Máy chủ phụ chưa từng sao chép máy chủ chính trước đó.</li>
-<li><strong>Sao chép sau khi mất kết nối</strong>&nbsp;- Máy chủ phụ và máy chủ chính trong quá trình truyền lệnh bị mất kết nối do vấn đề mạng, sau khi máy chủ phụ kết nối lại với máy chủ chính, tiếp tục sao chép từ máy chủ chính.</li>
-</ul>
-<p>Đối với sao chép lần đầu, chức năng sao chép phiên bản cũ hoạt động tốt; tuy nhiên,&nbsp;<strong>đối với sao chép sau khi mất kết nối, hiệu suất rất thấp do việc tạo và truyền RDB mỗi lần</strong>.</p>
-<blockquote>
-<p>🔔 Lưu ý:&nbsp;<strong>Lệnh SYNC là một hoạt động tốn nhiều tài nguyên</strong>.</p>
-<ul>
-<li>Máy chủ chính thực hiện lệnh&nbsp;<code>BGSAVE</code>&nbsp;để tạo tệp RDB, hoạt động này tốn nhiều tài nguyên CPU, bộ nhớ và I/O đĩa của máy chủ chính.</li>
-<li>Máy chủ chính truyền tệp RDB cho máy chủ phụ, hoạt động này tốn nhiều tài nguyên mạng của cả máy chủ chính và phụ và ảnh hưởng đến thời gian phản hồi của máy chủ chính.</li>
-<li>Trong quá trình máy chủ phụ tải tệp RDB, các lệnh yêu cầu khác bị chặn.</li>
-</ul>
-</blockquote>
-<h2>3. Sao chép phiên bản mới</h2>
-<blockquote>
-<p>Cách triển khai mới sau phiên bản Redis 2.8: Sử dụng lệnh&nbsp;<code>PSYNC</code>&nbsp;thay thế lệnh&nbsp;<code>SYNC</code>.</p>
-</blockquote>
-<p>Lệnh&nbsp;<code>PSYNC</code>&nbsp;có hai chế độ: đồng bộ hoàn toàn (full resynchronization) và đồng bộ một phần (partial resynchronization):</p>
-<ul>
-<li><strong><code>Đồng bộ hoàn toàn (full resynchronization)</code></strong>&nbsp;- Được sử dụng cho sao chép lần đầu. Các bước thực hiện tương tự như lệnh&nbsp;<code>SYNC</code>.</li>
-<li><strong><code>Đồng bộ một phần (partial resynchronization)</code></strong>&nbsp;- Được sử dụng cho sao chép sau khi mất kết nối.&nbsp;<strong>Nếu điều kiện cho phép, máy chủ chính có thể gửi các lệnh ghi được thực hiện trong quá trình ngắt kết nối cho máy chủ phụ</strong>, máy chủ phụ chỉ cần nhận và thực hiện các lệnh ghi này để duy trì trạng thái cơ sở dữ liệu của máy chủ chính và phụ nhất quán.</li>
-</ul>
-<h3>Đồng bộ một phần</h3>
-<p>Chức năng đồng bộ một phần bao gồm ba phần:</p>
-<ul>
-<li><strong>Offset sao chép</strong>&nbsp;của máy chủ chính và máy chủ phụ.</li>
-<li><strong>Bộ đệm chờ sao chép</strong>&nbsp;của máy chủ chính.</li>
-<li><strong>ID chạy của máy chủ</strong>.</li>
-</ul>
-<h4>Offset sao chép</h4>
-<p>Máy chủ chính và máy chủ phụ sẽ duy trì một offset sao chép riêng biệt.</p>
-<ul>
-<li>Nếu offset sao chép của máy chủ chính và máy chủ phụ giống nhau, điều đó có nghĩa là trạng thái cơ sở dữ liệu của hai máy chủ là nhất quán;</li>
-<li>Ngược lại, nếu offset sao chép không giống nhau, điều đó có nghĩa là trạng thái cơ sở dữ liệu của hai máy chủ không nhất quán.</li>
-</ul>
-<h4>Bộ đệm chờ sao chép</h4>
-<p><strong>Bộ đệm chờ sao chép là một hàng đợi FIFO có độ dài cố định được duy trì bởi máy chủ chính</strong>, kích thước mặc định là&nbsp;<code>1MB</code>.</p>
-<p>Bộ đệm chờ sao chép sẽ lưu trữ một phần lệnh ghi gần đây đã truyền và bộ đệm chờ sao chép sẽ ghi lại offset sao chép tương ứng cho mỗi byte trong hàng đợi.</p>
-<p>Khi máy chủ phụ kết nối lại với máy chủ chính sau khi mất kết nối, máy chủ phụ sẽ gửi lệnh&nbsp;<code>PSYNC</code>&nbsp;với offset sao chép của chính nó cho máy chủ chính, máy chủ chính sẽ dựa trên offset này để quyết định thực hiện hoạt động đồng bộ nào với máy chủ phụ.</p>
-<ul>
-<li>Nếu dữ liệu sau offset vẫn còn trong bộ đệm chờ sao chép, máy chủ chính sẽ thực hiện đồng bộ một phần với máy chủ phụ.</li>
-<li>Ngược lại, máy chủ chính sẽ thực hiện đồng bộ hoàn toàn với máy chủ phụ.</li>
-</ul>
-<blockquote>
-<p>🔔 Lưu ý:&nbsp;<strong>Điều chỉnh kích thước bộ đệm chờ sao chép một cách hợp lý</strong></p>
-<ul>
-<li>
-<p>Kích thước mặc định của bộ đệm chờ sao chép Redis là&nbsp;<code>1MB</code>.</p>
-</li>
-<li>
-<p>Kích thước tối thiểu của bộ đệm chờ sao chép có thể được ước tính bằng công thức&nbsp;<code>second * write_size_per_second</code>.</p>
-</li>
-</ul>
-</blockquote>
-<h4>ID chạy của máy chủ</h4>
-<ul>
-<li>Mỗi máy chủ Redis có một ID chạy để xác định duy nhất.</li>
-<li>ID chạy được tạo tự động khi máy chủ khởi động, bao gồm 40 ký tự thập lục phân ngẫu nhiên. Ví dụ: 132e358005e29741f8d7b0a42d666aace286edda</li>
-</ul>
-<p>Khi máy chủ phụ sao chép lần đầu từ máy chủ chính, máy chủ chính sẽ gửi ID chạy của chính nó cho máy chủ phụ và máy chủ phụ sẽ lưu trữ ID chạy này.</p>
-<p>Khi máy chủ phụ kết nối lại với máy chủ chính, máy chủ phụ sẽ gửi ID chạy đã lưu trữ trước đó:</p>
-<ul>
-<li>Nếu ID chạy đã lưu trữ và ID chạy hiện tại của máy chủ chính giống nhau, điều đó có nghĩa là máy chủ phụ đã kết nối với máy chủ chính trước đó, máy chủ chính sẽ tiếp tục thử nghiệm đồng bộ một phần;</li>
-<li>Ngược lại, nếu ID chạy không khớp, điều đó có nghĩa là máy chủ phụ không kết nối với máy chủ chính trước đó, máy chủ chính sẽ thực hiện đồng bộ hoàn toàn với máy chủ phụ.</li>
-</ul>
-<h3>Lệnh PSYNC</h3>
-<p>Sau khi hiểu cách triển khai đồng bộ một phần, việc hiểu cách thực hiện lệnh PSYNC sẽ dễ dàng hơn, nguyên tắc hoạt động cơ bản của nó như sau:</p>
-<p>Khi máy chủ phụ nhận được lệnh&nbsp;<code>SLAVEOF</code>, trước tiên kiểm tra xem máy chủ phụ đã sao chép từ máy chủ trước đó hay chưa.</p>
-<ul>
-<li>Nếu máy chủ phụ chưa sao chép từ bất kỳ máy chủ chính nào trước đó, nó sẽ gửi lệnh&nbsp;<code>PSYNC ? -1</code>&nbsp;đến máy chủ chính, yêu cầu đồng bộ hoàn toàn.</li>
-<li>Ngược lại, nó sẽ gửi lệnh&nbsp;<code>PSYNC &lt;runid&gt; &lt;offset&gt;</code>&nbsp;đến máy chủ chính.
-<ul>
-<li><code>runid</code>&nbsp;là ID chạy của máy chủ chính trong lần sao chép trước đó.</li>
-<li><code>offset</code>&nbsp;là offset sao chép.</li>
-</ul>
-</li>
-</ul>
-<p>Máy chủ chính nhận được lệnh&nbsp;<code>PSYNC &lt;runid&gt; &lt;offset&gt;</code>&nbsp;sẽ thực hiện phân tích:</p>
-<ul>
-<li>Nếu <strong>ID chạy của máy chủ chính và máy chủ phụ giống nhau và offset được chỉ định vẫn còn hiệu lực trong bộ đệm chờ sao chép</strong>, điều đó có nghĩa là máy chủ chính sẽ tiếp tục thực hiện đồng bộ một phần với máy chủ phụ.</li>
-<li>Nếu không thỏa mãn một trong hai điều kiện trên, máy chủ chính sẽ thực hiện đồng bộ toàn bộ với máy chủ phụ.</li>
-</ul>
-<h2>4. Kiểm tra nhịp tim</h2>
-<p>Trong giai đoạn <strong>truyền lệnh</strong>, máy chủ từ xa mặc định sẽ gửi lệnh đến máy chủ chính một lần mỗi giây:</p>
-<div class="language-" data-ext="" data-title=""><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span>REPLCONF ACK &lt;replication_offset&gt;</span></span></code></pre>
-</div><p>Trong đó, <code>replication_offset</code> là vị trí sao chép hiện tại của máy chủ từ xa.</p>
-<p>Gửi lệnh <code>REPLCONF ACK</code> có ba tác dụng đối với máy chủ chính và máy chủ phụ:</p>
-<ul>
-<li>Kiểm tra trạng thái kết nối mạng giữa máy chủ chính và máy chủ phụ.</li>
-<li>Hỗ trợ thực hiện tùy chọn min-slaves.</li>
-<li>Kiểm tra việc mất lệnh.</li>
-</ul>
-<h3>Kiểm tra trạng thái kết nối giữa máy chủ chính và máy chủ phụ</h3>
-<p><strong>Có thể kiểm tra xem kết nối mạng giữa máy chủ chính và máy chủ phụ có bình thường hay không</strong> bằng cách gửi và nhận lệnh <code>REPLCONF ACK</code>: Nếu máy chủ chính không nhận được lệnh <code>REPLCONF ACK</code> từ máy chủ phụ trong hơn một giây, máy chủ chính sẽ biết rằng có vấn đề về kết nối giữa máy chủ chính và máy chủ phụ.</p>
-<p>Có thể sử dụng lệnh <code>INFO replication</code> để gửi đến máy chủ chính và xem trong cột lag của danh sách máy chủ phụ, thời gian đã trôi qua kể từ khi máy chủ phụ gửi lệnh <code>REPLCONF ACK</code> đến máy chủ chính.</p>
-<h3>Hỗ trợ thực hiện tùy chọn min-slaves</h3>
-<p>Tùy chọn <code>min-slaves-to-write</code> và <code>min-slaves-max-lag</code> trong Redis giúp ngăn máy chủ chính thực hiện lệnh ghi trong trường hợp không an toàn.</p>
-<p>【Ví dụ】Cấu hình min-slaves</p>
-<div class="language-" data-ext="" data-title=""><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span>min-slaves-to-write 3</span></span>
-<span class="line"><span>min-slaves-max-lag 10</span></span></code></pre>
-</div><p>Cấu hình trên đại diện cho: Nếu số lượng máy chủ phụ nhỏ hơn 3 hoặc độ trễ của ba máy chủ phụ lớn hơn hoặc bằng 10 giây, máy chủ chính sẽ từ chối thực hiện lệnh ghi.</p>
-<h3>Kiểm tra việc mất lệnh</h3>
-<p>Nếu do sự cố mạng, các lệnh ghi mà máy chủ chính truyền cho máy chủ phụ bị mất, khi máy chủ phụ gửi lệnh <code>REPLCONF ACK</code> định kỳ đến máy chủ chính, máy chủ chính sẽ nhận ra rằng vị trí sao chép của máy chủ phụ ít hơn của chính nó. Sau đó, máy chủ chính sẽ tìm các dữ liệu mà máy chủ phụ thiếu trong bộ đệm sao chép và gửi lại cho máy chủ phụ dựa trên vị trí sao chép mà máy chủ phụ đã gửi.</p>
-<h2>5. Quy trình sao chép</h2>
-<p>Bằng cách gửi lệnh SLAVEOF như sau đến máy chủ phụ, bạn có thể sao chép máy chủ chính.</p>
-<div class="language-" data-ext="" data-title=""><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span>SLAVEOF &lt;master_ip&gt; &lt;master_port&gt;</span></span></code></pre>
-</div><h3>Bước 1. Cấu hình máy chủ chính và máy chủ phụ</h3>
-<p>Cấu hình máy chủ phụ rất đơn giản, chỉ cần thêm dòng sau vào tệp cấu hình:</p>
-<div class="language-" data-ext="" data-title=""><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span>slaveof 127.0.0.1 6379</span></span></code></pre>
-</div><p>Tất nhiên, bạn cần thay thế <code>127.0.0.1</code> và <code>6379</code> trong mã bằng IP và cổng của máy chủ chính của bạn.</p>
-<p>Một cách khác là sử dụng lệnh <a href="https://redis.io/commands/slaveof/" target="_blank" rel="noopener noreferrer">SLAVEOF host port</a>, nhập IP và cổng của máy chủ chính, sau đó đồng bộ hóa sẽ bắt đầu:</p>
-<div class="language-" data-ext="" data-title=""><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span>127.0.0.1:6379&gt; SLAVEOF 127.0.0.1 10086</span></span>
-<span class="line"><span>OK</span></span></code></pre>
-</div><h3>Bước 2. Thiết lập kết nối TCP giữa máy chủ chính và máy chủ phụ.</h3>
-<h3>Bước 3. Gửi PING để kiểm tra trạng thái giao tiếp.</h3>
-<h3>Bước 4. Xác thực.</h3>
-<p>Nếu máy chủ chính không thiết lập <code>requirepass</code>, máy chủ phụ không thiết lập <code>masterauth</code>, thì không cần xác thực; ngược lại, cần xác thực. Nếu xác thực không thành công, quá trình sao chép sẽ bị hủy bỏ.</p>
-<p>Nếu máy chủ chính đã đặt mật khẩu thông qua tùy chọn <code>requirepass</code>, để đảm bảo quá trình đồng bộ hóa máy chủ phụ diễn ra suôn sẻ, chúng ta cũng phải thiết lập xác thực tương ứng cho máy chủ phụ.</p>
-<p>Đối với một máy chủ đang chạy, bạn có thể sử dụng lệnh sau đây trên khách hàng:</p>
-<div class="language-" data-ext="" data-title=""><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span>config set masterauth &lt;password&gt;</span></span></code></pre>
-</div><p>Để thiết lập mật khẩu này vĩnh viễn, bạn có thể thêm nó vào tệp cấu hình:</p>
-<div class="language-" data-ext="" data-title=""><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span>masterauth &lt;password&gt;</span></span></code></pre>
-</div><p>Ngoài ra, còn một số tùy chọn khác liên quan đến bộ đệm luồng sao chép được sử dụng khi máy chủ chính thực hiện đồng bộ hóa một phần, chi tiết có thể tham khảo tệp <code>redis.conf</code> đi kèm với mã nguồn Redis.</p>
-<h3>Bước 5. Gửi thông tin cổng.</h3>
-<p>máy chủ phụ thực hiện <code>REPLCONF listening-port &lt;port-number&gt;</code>, gửi số cổng lắng nghe của máy chủ phụ đến máy chủ chính.</p>
-<h3>Bước 6. Đồng bộ hóa.</h3>
-<p>Đã được giới thiệu trước đó, không lặp lại ở đây.</p>
-<h3>Bước 7. Truyền lệnh.</h3>
-<p>Trong giai đoạn truyền lệnh, máy chủ phụ mặc định sẽ gửi lệnh đến máy chủ chính mỗi giây một lần:</p>
-<div class="language-" data-ext="" data-title=""><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span>REPLCONF ACK &lt;replication_coffset&gt;</span></span></code></pre>
-</div><p>Các lệnh có tác dụng:</p>
-<ul>
-<li>Kiểm tra trạng thái kết nối mạng giữa máy chủ chính và máy chủ phụ.</li>
-<li>Hỗ trợ thực hiện tùy chọn min-slave.</li>
-<li>Kiểm tra việc mất lệnh.</li>
-</ul>
-<h2>6. Các tùy chọn cấu hình sao chép</h2>
-<p>Từ Redis 2.8 trở đi, để đảm bảo tính an toàn của dữ liệu, bạn có thể cấu hình để máy chủ chính chỉ thực hiện lệnh ghi khi có ít nhất N máy chủ con đang kết nối.</p>
-<p>Tuy nhiên, vì Redis sử dụng sao chép bất đồng bộ, nên dữ liệu ghi mà máy chủ chính gửi không nhất thiết sẽ được máy chủ con nhận được, do đó, khả năng mất dữ liệu vẫn tồn tại.</p>
-<p>Dưới đây là cách hoạt động của tính năng này:</p>
-<ul>
-<li>Máy chủ con gửi lệnh PING đến máy chủ chính mỗi giây một lần và báo cáo tình trạng xử lý luồng sao chép.</li>
-<li>Máy chủ chính ghi lại thời gian máy chủ con cuối cùng gửi lệnh PING đến nó.</li>
-<li>Người dùng có thể cấu hình giá trị tối đa của độ trễ mạng <code>min-slaves-max-lag</code> và số lượng tối thiểu máy chủ con cần để thực hiện lệnh ghi <code>min-slaves-to-write</code>.</li>
-</ul>
-<p>Nếu có ít nhất <code>min-slaves-to-write</code> máy chủ con và tất cả các máy chủ con này có độ trễ nhỏ hơn <code>min-slaves-max-lag</code> giây, máy chủ chính sẽ thực hiện lệnh ghi được yêu cầu từ khách hàng.</p>
-<p>Bạn có thể coi tính năng này như một phiên bản nới lỏng điều kiện C trong lý thuyết CAP: Mặc dù không đảm bảo tính bền vững của lệnh ghi, nhưng ít nhất cửa sổ mất dữ liệu sẽ được giới hạn chặt chẽ trong số giây được chỉ định.</p>
-<p>Mặt khác, nếu không đáp ứng được các điều kiện được chỉ định bởi <code>min-slaves-to-write</code> và <code>min-slaves-max-lag</code>, lệnh ghi sẽ không được thực hiện và máy chủ chính sẽ trả về một lỗi cho khách hàng yêu cầu thực hiện lệnh ghi.</p>
-<p>Dưới đây là hai tùy chọn của tính năng này và các tham số cần thiết cho chúng:</p>
-<ul>
-<li><code>min-slaves-to-write &lt;số lượng máy chủ con&gt;</code></li>
-<li><code>min-slaves-max-lag &lt;số giây&gt;</code></li>
-</ul>
-<p>Thông tin chi tiết có thể được tham khảo trong tệp <code>redis.conf</code> đi kèm với mã nguồn Redis.</p>
-]]></content:encoded>
     </item>
   </channel>
 </rss>
