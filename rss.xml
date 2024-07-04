@@ -6,8 +6,8 @@
     <link>https://vanhung4499.github.io/</link>
     <description>My personal wiki and blog</description>
     <language>en-US</language>
-    <pubDate>Thu, 04 Jul 2024 09:58:25 GMT</pubDate>
-    <lastBuildDate>Thu, 04 Jul 2024 09:58:25 GMT</lastBuildDate>
+    <pubDate>Thu, 04 Jul 2024 10:08:24 GMT</pubDate>
+    <lastBuildDate>Thu, 04 Jul 2024 10:08:24 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>java</category>
@@ -29,8 +29,8 @@
     <category>interview</category>
     <item>
       <title>Common Tools</title>
-      <link>https://vanhung4499.github.io/programming/java/common-tool/README.md.html</link>
-      <guid>https://vanhung4499.github.io/programming/java/common-tool/README.md.html</guid>
+      <link>https://vanhung4499.github.io/programming/java/common-tool/</link>
+      <guid>https://vanhung4499.github.io/programming/java/common-tool/</guid>
       <source url="https://vanhung4499.github.io/rss.xml">Common Tools</source>
       <pubDate>Thu, 04 Jul 2024 09:37:15 GMT</pubDate>
     </item>
