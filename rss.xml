@@ -6,8 +6,8 @@
     <link>https://vanhung4499.github.io/</link>
     <description>My personal wiki and blog</description>
     <language>en-US</language>
-    <pubDate>Sat, 06 Jul 2024 01:56:35 GMT</pubDate>
-    <lastBuildDate>Sat, 06 Jul 2024 01:56:35 GMT</lastBuildDate>
+    <pubDate>Sat, 06 Jul 2024 10:37:37 GMT</pubDate>
+    <lastBuildDate>Sat, 06 Jul 2024 10:37:37 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>design-pattern</category>
@@ -9078,14 +9078,24 @@ Dưới đây là một ví dụ sử dụng <code>BufferedInputStream</code> đ
       <link>https://vanhung4499.github.io/about-me.html</link>
       <guid>https://vanhung4499.github.io/about-me.html</guid>
       <source url="https://vanhung4499.github.io/rss.xml">About Me</source>
-      <description>About Me Profile Exploration &amp; geek enthusiast, software engineer, hackintosher | Currently focusing on backend development with main directions in Spring | Discovering a bigger...</description>
+      <description>About Me Typing SVG Introduction Hung Nguyen, 1999, now living in HCMC, Vietnam. I&amp;apos;m a software engineer, a macOS lover, and a Hackintosher. I love to learn new things, especial...</description>
       <category>about</category>
-      <pubDate>Sun, 12 Mar 2023 00:00:00 GMT</pubDate>
+      <pubDate>Fri, 28 Jun 2024 15:54:38 GMT</pubDate>
       <content:encoded><![CDATA[
-
+<p><a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&amp;pause=1000&amp;random=false&amp;width=435&amp;lines=Learn%2C+Learn+More%2C+Learn+Forever!" alt="Typing SVG"></a></p>
+<h2>Introduction</h2>
+<p>Hung Nguyen, 1999, now living in HCMC, Vietnam.</p>
+<p>I'm a software engineer, a macOS lover, and a Hackintosher. I love to learn new things, especially in the field of technology. I love self-taught, and I'm still learning new things everyday. I love to write, and I'm trying to write more to share my knowledge and experience with others.</p>
+<p>As a software engineer, I love to see how things work in the high level. By seeing how each component works and interacts with each other, I can find out what can be optimized/improved. Yet, when I start the implementation, I<br>
+prefer to do one thing at a time. Adding more components as needed. Beside, I love automation, and I can spend a lot of time to automate things.</p>
 <h2>Profile</h2>
-<p><em>Exploration &amp; geek enthusiast, software engineer, hackintosher | Currently focusing on backend development with main directions in Spring | Discovering a bigger world together with you.</em></p>
+<ul>
+<li>Software Engineer, <a href="vnohackintosh.com">Hackintosher</a>, macOS lover.</li>
+<li>Currently focusing on backend development with main directions in Java, Golang, TypeScript.</li>
+<li>Interested in DevOps, System, Automation, Productivity and Writing.</li>
+</ul>
 <h2>Skills</h2>
+<p>I can be working as Fullstack Developer, but I prefer Backend Development. All the skills I have are self-taught, and I'm still learning new things everyday.</p>
 <h3>Languages</h3>
 <img src="https://skillicons.dev/icons?i=java,golang,javascript,ts,python,html,css,regex,md,bash&amp;theme=dark&amp;&amp;perline=10" alt="Skills">
 <h3>Frameworks</h3>
@@ -9101,7 +9111,7 @@ Dưới đây là một ví dụ sử dụng <code>BufferedInputStream</code> đ
 <h2>Preview</h2>
 <figure><img src="https://count.getloli.com/get/@:vanhung4499?theme=gelbooru-h" alt=":Augenestern-creator" tabindex="0" loading="lazy"><figcaption>:Augenestern-creator</figcaption></figure>
 <h2>Activity Graph</h2>
-<figure><a href="https://github.com/OrageKK/github-readme-activity-graph" target="_blank" rel="noopener noreferrer"><img src="https://github-readme-activity-graph-sandy.vercel.app/graph?username=vanhung4499&amp;theme=dracula" alt="Ashutosh's github activity graph" tabindex="0" loading="lazy"></a><figcaption>Ashutosh's github activity graph</figcaption></figure>
+<figure><a href="https://github.com/vanhung44499/github-readme-activity-graph" target="_blank" rel="noopener noreferrer"><img src="https://github-readme-activity-graph-sandy.vercel.app/graph?username=vanhung4499&amp;theme=dracula" alt="Ashutosh's github activity graph" tabindex="0" loading="lazy"></a><figcaption>Ashutosh's github activity graph</figcaption></figure>
 <h2>About This Site</h2>
 <p><a href="/about">About</a></p>
 ]]></content:encoded>
@@ -9112,150 +9122,25 @@ Dưới đây là một ví dụ sử dụng <code>BufferedInputStream</code> đ
       <link>https://vanhung4499.github.io/about.html</link>
       <guid>https://vanhung4499.github.io/about.html</guid>
       <source url="https://vanhung4499.github.io/rss.xml">About this site</source>
-      <description>About this site ✨📒 Record the process of building this site, and share some thoughts and experiences. Introduction My previous wiki was built with Quartz, which is a publish to...</description>
+      <description>About this site ✨📒 Record the process of building this site, and share some thoughts and experiences. Introduction This is my personal blog and my personal wiki. I record some ...</description>
       <category>blog</category>
-      <pubDate>Tue, 14 Mar 2023 21:45:45 GMT</pubDate>
+      <pubDate>Fri, 28 Jun 2024 15:54:38 GMT</pubDate>
       <content:encoded><![CDATA[
 <div class="hint-container info">
 <p class="hint-container-title">✨📒</p>
 <p>Record the process of building this site, and share some thoughts and experiences.</p>
 </div>
 <h2>Introduction</h2>
-<p>My previous wiki was built with <a href="https://quartz.jzhao.xyz/" target="_blank" rel="noopener noreferrer">Quartz</a>, which is a publish tool for obsidian nots. I have been using it for a long time, but I found that it is not very convenient to share and search because of the navigation and the structure of the page. So I need to find a better alternative.</p>
-<p>After some searching on github, I found some good-looking wiki/blog sites. I tried some of them then the last choice of me is <a href="https://v2.vuepress.vuejs.org/zh/" target="_blank" rel="noopener noreferrer">VuePress</a>, which is a static site generator based on Vue.js. It is very easy to use and has a lot of plugins and themes. I chose the <a href="https://theme-hope.vuejs.press/zh/" target="_blank" rel="noopener noreferrer">vuepress-theme-hope</a> theme, which is very beautiful and has a lot of features.</p>
-<p>And I found a customized of hope theme, which is <a href="https://github.com/OrageKK/oragekk.github.io" target="_blank" rel="noopener noreferrer">https://github.com/OrageKK/oragekk.github.io</a>, It is very beautiful and has a lot of features. So I forked it and made some changes to fit my needs. Thanks to the author for the great work.</p>
-<h2>Markdown Enhancement</h2>
-<p>The Markdown effect of the hope theme is surprisingly good, and it supports many features that ordinary Markdown does not, such as custom containers, code blocks with tabs, and the most convenient feature of being able to write flowcharts directly. It also allows for optional highlight themes (the code highlighting on this site is based on shikiPlugin, which, although not as lightweight and efficient as the default prismjs, provides more accurate syntax highlighting). For specific effects, see here ☞ <a href="https://theme-hope.vuejs.press/guide/markdown/intro.html" target="_blank" rel="noopener noreferrer">Markdown Enhance</a>.</p>
-<h2>Project Structure</h2>
-<div class="language-shell line-numbers-mode" data-ext="shell" data-title="shell"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#56B6C2;--shiki-dark:#56B6C2">.</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">├──</span><span style="color:#98C379;--shiki-dark:#98C379"> .github</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">   ├──</span><span style="color:#98C379;--shiki-dark:#98C379"> ISSUE_TEMPLATE</span><span style="color:#7F848E;--shiki-dark:#7F848E;font-style:italic;--shiki-dark-font-style:italic"> # Issue templates</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   └──</span><span style="color:#98C379;--shiki-dark:#98C379"> bug-report.yml</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">   └──</span><span style="color:#98C379;--shiki-dark:#98C379"> workflows</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">       └──</span><span style="color:#98C379;--shiki-dark:#98C379"> deploy-docs.yml</span><span style="color:#7F848E;--shiki-dark:#7F848E;font-style:italic;--shiki-dark-font-style:italic"> # Deployment script</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">├──</span><span style="color:#98C379;--shiki-dark:#98C379"> CNAME</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">├──</span><span style="color:#98C379;--shiki-dark:#98C379"> LICENSE</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">├──</span><span style="color:#98C379;--shiki-dark:#98C379"> README.md</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">├──</span><span style="color:#98C379;--shiki-dark:#98C379"> api</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">   └──</span><span style="color:#98C379;--shiki-dark:#98C379"> proxy.js</span><span style="color:#7F848E;--shiki-dark:#7F848E;font-style:italic;--shiki-dark-font-style:italic"> # Cross-origin proxy</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">├──</span><span style="color:#98C379;--shiki-dark:#98C379"> env.d.ts</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">├──</span><span style="color:#98C379;--shiki-dark:#98C379"> package.json</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">├──</span><span style="color:#98C379;--shiki-dark:#98C379"> pnpm-lock.yaml</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">├──</span><span style="color:#98C379;--shiki-dark:#98C379"> script</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">   ├──</span><span style="color:#98C379;--shiki-dark:#98C379"> requirements.txt</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">   └──</span><span style="color:#98C379;--shiki-dark:#98C379"> submit.py</span><span style="color:#7F848E;--shiki-dark:#7F848E;font-style:italic;--shiki-dark-font-style:italic"> # GitHub Actions script for submitting URLs</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">├──</span><span style="color:#98C379;--shiki-dark:#98C379"> src</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">   ├──</span><span style="color:#98C379;--shiki-dark:#98C379"> .vuepress</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   ├──</span><span style="color:#98C379;--shiki-dark:#98C379"> client.ts</span><span style="color:#7F848E;--shiki-dark:#7F848E;font-style:italic;--shiki-dark-font-style:italic"> # Client configuration file</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   ├──</span><span style="color:#98C379;--shiki-dark:#98C379"> components</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   ├──</span><span style="color:#98C379;--shiki-dark:#98C379"> MyCoverLink.vue</span><span style="color:#7F848E;--shiki-dark:#7F848E;font-style:italic;--shiki-dark-font-style:italic"> # Friend link component</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   └──</span><span style="color:#98C379;--shiki-dark:#98C379"> Mylink.vue</span><span style="color:#7F848E;--shiki-dark:#7F848E;font-style:italic;--shiki-dark-font-style:italic"> # Card component</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   ├──</span><span style="color:#98C379;--shiki-dark:#98C379"> config.ts</span><span style="color:#7F848E;--shiki-dark:#7F848E;font-style:italic;--shiki-dark-font-style:italic"> # VuePress configuration file</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   ├──</span><span style="color:#98C379;--shiki-dark:#98C379"> data</span><span style="color:#7F848E;--shiki-dark:#7F848E;font-style:italic;--shiki-dark-font-style:italic"> # Data</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   ├──</span><span style="color:#98C379;--shiki-dark:#98C379"> navbar</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   ├──</span><span style="color:#98C379;--shiki-dark:#98C379"> plugins</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   ├──</span><span style="color:#98C379;--shiki-dark:#98C379"> vuepress-plugin-canvas</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   ├──</span><span style="color:#98C379;--shiki-dark:#98C379"> vuepress-plugin-gradient-cover</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   ├──</span><span style="color:#98C379;--shiki-dark:#98C379"> vuepress-plugin-hitokoto</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   ├──</span><span style="color:#98C379;--shiki-dark:#98C379"> vuepress-plugin-live2DAssist</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   └──</span><span style="color:#98C379;--shiki-dark:#98C379"> vuepress-plugin-popper</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   ├──</span><span style="color:#98C379;--shiki-dark:#98C379"> public</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   ├──</span><span style="color:#98C379;--shiki-dark:#98C379"> assets</span><span style="color:#7F848E;--shiki-dark:#7F848E;font-style:italic;--shiki-dark-font-style:italic"> # Resources</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   ├──</span><span style="color:#98C379;--shiki-dark:#98C379"> sidebar</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   ├──</span><span style="color:#98C379;--shiki-dark:#98C379"> styles</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   ├──</span><span style="color:#98C379;--shiki-dark:#98C379"> theme</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   ├──</span><span style="color:#98C379;--shiki-dark:#98C379"> api</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   └──</span><span style="color:#98C379;--shiki-dark:#98C379"> bing.ts</span><span style="color:#7F848E;--shiki-dark:#7F848E;font-style:italic;--shiki-dark-font-style:italic"> # Bing daily wallpaper</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   ├──</span><span style="color:#98C379;--shiki-dark:#98C379"> components</span><span style="color:#7F848E;--shiki-dark:#7F848E;font-style:italic;--shiki-dark-font-style:italic"> # Custom components</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   ├──</span><span style="color:#98C379;--shiki-dark:#98C379"> index.ts</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   ├──</span><span style="color:#98C379;--shiki-dark:#98C379"> layouts</span><span style="color:#7F848E;--shiki-dark:#7F848E;font-style:italic;--shiki-dark-font-style:italic"> # Custom layouts</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   └──</span><span style="color:#98C379;--shiki-dark:#98C379"> utils</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">       ├──</span><span style="color:#98C379;--shiki-dark:#98C379"> busuanzi.pure.js</span><span style="color:#7F848E;--shiki-dark:#7F848E;font-style:italic;--shiki-dark-font-style:italic"> # Busuanzi statistics</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">       └──</span><span style="color:#98C379;--shiki-dark:#98C379"> time.ts</span><span style="color:#7F848E;--shiki-dark:#7F848E;font-style:italic;--shiki-dark-font-style:italic"> # Runtime</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">   │</span><span style="color:#98C379;--shiki-dark:#98C379">   └──</span><span style="color:#98C379;--shiki-dark:#98C379"> theme.ts</span><span style="color:#7F848E;--shiki-dark:#7F848E;font-style:italic;--shiki-dark-font-style:italic"> # Theme configuration file</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">│</span><span style="color:#98C379;--shiki-dark:#98C379">   └──</span><span style="color:#98C379;--shiki-dark:#98C379"> README.md</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">├──</span><span style="color:#98C379;--shiki-dark:#98C379"> tsconfig.json</span></span>
-<span class="line"><span style="color:#61AFEF;--shiki-dark:#61AFEF">└──</span><span style="color:#98C379;--shiki-dark:#98C379"> vercel.json</span><span style="color:#7F848E;--shiki-dark:#7F848E;font-style:italic;--shiki-dark-font-style:italic"> # Vercel configuration file</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2>Framework Support</h2>
-<p><a href="https://v2.vuepress.vuejs.org/" target="_blank" rel="noopener noreferrer">vuepress2.x</a></p>
-<h2>Theme Support</h2>
-<p><a href="https://theme-hope.vuejs.press/" target="_blank" rel="noopener noreferrer">vuepress-theme-hope</a></p>
-<h2>Markdown Editor</h2>
-<p>I use <a href="https://obsidian.md/" target="_blank" rel="noopener noreferrer">Obsidian</a> to write markdown files, which is a very powerful markdown editor. It supports many features such as graph view, backlinks, and plugins. I highly recommend it.</p>
-<p>To work along with VuePress, you only need create a new vault in <code>src</code> folder, and then you can write markdown files in it.</p>
-<div class="hint-container tip">
-<p class="hint-container-title">Tips</p>
-<p>When you create a new vault, an <code>.obsidian</code> will be created in the <code>src</code> directory, this is Obsidian configs and plugins folder. You can ignore it in the <code>.gitignore</code> file to avoid uploading it to the repository.</p>
-</div>
-<h2>Customization</h2>
-<p>I have customized the original theme as follows. The main customizations are divided into:</p>
-<ol>
-<li>
-<p><strong>Custom Layouts</strong></p>
-<ul>
-<li><code>NotFound.vue</code></li>
-<li><code>Layout.vue</code> (added a donation component)</li>
-<li><code>News.vue</code> (layout for news list)</li>
-</ul>
-</li>
-<li>
-<p><strong>Custom Components</strong></p>
-<ul>
-<li><code>BlogHero.vue</code></li>
-<li><code>PageFooter.vue</code></li>
-<li><code>Sponsor.vue</code> (donation component) // Not used in my site</li>
-<li><code>NewsList.vue</code> (news list)</li>
-<li><code>NewsItem.vue</code> (news item)</li>
-</ul>
-</li>
-<li>
-<p><strong>Local Plugin Development</strong></p>
-<ul>
-<li><code>vuepress-plugin-canvas</code> (supports two types of dynamic backgrounds: rainbow background and geometric shapes)</li>
-<li><code>vuepress-plugin-gradient-cover</code> (background overlay)</li>
-<li><code>vuepress-plugin-hitokoto</code> (Hitokoto plugin) // Not used in my site</li>
-<li><code>vuepress-plugin-live2DAssist</code> (assistant for Live2D; hides on pages with sidebars to avoid obstruction)</li>
-<li><code>vuepress-plugin-popper</code> (mouse effect, based on <a href="https://github.com/moefyit/moefy-canvas" target="_blank" rel="noopener noreferrer">@moefy-canvas/theme-popper</a>)</li>
-</ul>
-</li>
-<li>
-<p><strong>External Content References</strong></p>
-<ul>
-<li><a href="https://github.com/oh-my-live2d/vuepress-plugin-oh-my-live2d" target="_blank" rel="noopener noreferrer">vuepress-plugin-oh-my-live2d</a> (Live2D plugin)</li>
-<li>Busuanzi statistics</li>
-<li><a href="https://github.com/moefyit/moefy-canvas" target="_blank" rel="noopener noreferrer">@moefy-canvas/theme-popper</a> (original plugin only supported VuePress 1.x, developed a localized plugin to support VuePress 2.x)</li>
-<li><a href="https://v2.vuepress.vuejs.org/zh/reference/plugin/google-analytics.html" target="_blank" rel="noopener noreferrer">@vuepress/plugin-google-analytics</a> (supports Google Analytics 4, which replaces the old UA)</li>
-</ul>
-</li>
-<li>
-<p><strong>Configuration Content</strong></p>
-<ul>
-<li>Navbar</li>
-<li>Sidebar</li>
-<li>Comments using <a href="https://waline.js.org/" target="_blank" rel="noopener noreferrer">Waline</a></li>
-<li>Search using <a href="https://plugin-search-pro.vuejs.press/" target="_blank" rel="noopener noreferrer">vuepress-plugin-search-pro</a></li>
-<li>Enabled copyright plugin</li>
-<li>Feed RSS plugin</li>
-<li>Added article type - "News"; added image preview selector for news markdown images</li>
-</ul>
-</li>
-<li>
-<p><strong>Miscellaneous</strong></p>
-<ul>
-<li>Runtime statistics</li>
-<li>CSS beautification</li>
-<li>Introduced fonts: PinYu Handwriting, XiaXingKai</li>
-<li>Added custom emojis for Waline and modified the display style</li>
-<li>Personalized log</li>
-<li>Automatically push new article URLs to search engines (Baidu, Bing, Google) 👉 <a href="/platform/github/github-action">Detailed Configuration</a></li>
-</ul>
-</li>
-</ol>
-<h2>Conclusion</h2>
-<blockquote>
-<p>This is an ongoing project, with continuous optimization.</p>
-<p>Local plugins are available for anyone interested. The source code is open; click the GitHub icon in the top right corner to access it. And don't forget to leave a star! 🌟</p>
-</blockquote>
+<p>This is my personal blog and my personal wiki. I record some of my thoughts, experiences, and knowledge in the process of learning and working. I hope to share my knowledge with more people and learn from each other.</p>
+<h2>Features</h2>
+<p>Please refer to the <a href="wiki">Wiki</a> for details on the features of this site.</p>
+<p>I write a lot of articles about technical: programming, algorithms, databases, frameworks, DevOps, side projects, system design, design-pattern, and interviews.</p>
+<h2>How to build</h2>
+<p>I build this site using <a href="https://v2.vuepress.vuejs.org" target="_blank" rel="noopener noreferrer">VuePress</a>. The theme is <a href="https://theme-hope.vuejs.press" target="_blank" rel="noopener noreferrer">Hope</a>.</p>
+<p>I love markdown! I use <a href="https://obsidian.md" target="_blank" rel="noopener noreferrer">Obsidian</a> to write and manage my articles by markdown.</p>
+<p>Please refer to the <a href="https://github.com/vanhung4499/my-wiki" target="_blank" rel="noopener noreferrer">README.md</a> for more details on how to build this site.</p>
+<h2>Deploy</h2>
+<p>This site is deployed on <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a> by [GitHub Actions].</p>
 ]]></content:encoded>
     </item>
     <item>
@@ -9348,12 +9233,8 @@ Dưới đây là một ví dụ sử dụng <code>BufferedInputStream</code> đ
       <link>https://vanhung4499.github.io/programming/</link>
       <guid>https://vanhung4499.github.io/programming/</guid>
       <source url="https://vanhung4499.github.io/rss.xml">Programming</source>
-      <description>Programming Languages This section contains articles about programming languages.</description>
       <category>programming</category>
       <pubDate>Fri, 28 Jun 2024 15:54:38 GMT</pubDate>
-      <content:encoded><![CDATA[
-<p>This section contains articles about programming languages.</p>
-]]></content:encoded>
     </item>
     <item>
       <title>Projects</title>
